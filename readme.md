@@ -1,4 +1,6 @@
-Welcome to the take home portion of your interview! We're excited to jam through some technical stuff with you, but first it'll help to get a sense of how you work through data and coding problems. Work through what you can independently, but do feel free to reach out if you have blocking questions or problems.
+![](https://assets-global.website-files.com/5b69e8315733f2850ec22669/5b749a4663ff82be270ff1f5_GSC%20Lockup%20(Orange%20%3A%20Black).svg)
+
+### Welcome to the take home portion of your interview! We're excited to jam through some technical stuff with you, but first it'll help to get a sense of how you work through data and coding problems. Work through what you can independently, but do feel free to reach out if you have blocking questions or problems.
 
 1) This requires Postgres (9.4+) & Rails(4.2+), so if you don't already have both installed, please install them.
 
@@ -23,11 +25,11 @@ Welcome to the take home portion of your interview! We're excited to jam through
         - `# of chairs greater than or equal to 100: category = 'ls1 large' `
     - If the Post Code is of the LS2 prefix type: 
         - `# of chairs below the 50th percentile for ls2: category = 'ls2 small'`
-   	    - `# of chairs above the 50th percentile for ls2: category = 'ls2 large'`
+        - `# of chairs above the 50th percentile for ls2: category = 'ls2 large'`
     - For Post Code is something else:
         - `category = 'other'`
 
-	    *Please share any tests you wrote for #5*
+    *Please share any tests you wrote for #5*
 
 6) Write a custom view to aggregate the categories [provide view SQL AND the results of this view]
     - category: The category column

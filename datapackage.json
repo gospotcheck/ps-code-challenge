@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "name": "Leeds City Council", 
+      "email": "richard.brook@leeds.gov.uk"
+    }
+  ], 
+  "extras": {
+    "dp_modified": "2015-10-06T14:03:33", 
+    "update_frequency_text": "Annually", 
+    "attribution": "<p>Click this link for information: <a href=\"http://www.leeds.gov.uk/opendata/Pages/Licences.aspx\" target=\"_blank\" rel=\"nofollow\">http://www.leeds.gov.uk/opendata/Pages/Licences.aspx</a>\r\n</p>", 
+    "email_notify_author": false, 
+    "temporal_coverage_to": "31/03/2016", 
+    "technical_documentation": "", 
+    "temporal_coverage_from": "01/04/2015", 
+    "next_review_date": "03/10/2016", 
+    "email_notify_maintainer": false, 
+    "odi-certificate": "", 
+    "license_text": "", 
+    "is_developer_dataset": false, 
+    "dp_created": "2015-10-01T15:40:13"
+  }, 
+  "description": "<p>This dataset provides a list of all licenced street cafes in Leeds city centre, along with the number of seats at each cafe.&nbsp;</p>", 
+  "license": {
+    "type": "uk-ogl3", 
+    "title": "uk-ogl3"
+  }, 
+  "title": "Street Caf\u00e9 Licences in Leeds", 
+  "keywords": [
+    "business", 
+    "cafe", 
+    "cafes", 
+    "licence", 
+    "restaurant", 
+    "restaurants", 
+    "tourism"
+  ], 
+  "author": {
+    "name": "Richard Brook", 
+    "email": "richard.brook@leeds.gov.uk"
+  }, 
+  "resources": [
+    {
+      "hash": "9124bbee05b4c37923562bf3c21c5f3d", 
+      "description": "Street cafe licences in Leeds", 
+      "title": "2015/16", 
+      "format": "CSV", 
+      "path": "https://aql.datapress.com/leeds/dataset/street-cafes-licences-in-leeds/2015-10-01T16:15:46/Street Cafes 2015-16.csv", 
+      "name": "2015-16"
+    }
+  ], 
+  "name": "street-cafes-licences-in-leeds"
+}
