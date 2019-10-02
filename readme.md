@@ -4,7 +4,7 @@
 
 1) This requires Postgres (9.4+) & Rails(4.2+), so if you don't already have both installed, please install them.
 
-2) Surf over to https://datahub.io/dataset/street-cafes-licences-in-leeds, and download the data package there into a table called street_cafes in Postgres (remove the headers and name them yourself).  If that link doesn't work, you can use the json file at https://github.com/gospotcheck/ps-code-challenge/blob/master/datapackage.json
+2) Download the data file from: https://github.com/gospotcheck/ps-code-challenge/blob/master/Street%20Cafes%202015-16.csv
 
 3) Add a varchar column to the table called `category`. 
 
