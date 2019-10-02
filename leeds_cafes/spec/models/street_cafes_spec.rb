@@ -2,12 +2,12 @@ require 'rails_helper'
 RSpec.describe StreetCafe, type: :model do
   before :each do
     StreetCafe.destroy_all
-    @pur_pour = StreetCafe.create(post_code: 'LS98', chairs: 15)
-    @tea_time = StreetCafe.create(post_code: 'LS99', chairs: 25)
-    @york_tea = StreetCafe.create(post_code: 'LS13', chairs: 20)
-    @york_and_humber = StreetCafe.create(post_code: 'LS2', chairs: 5)
-    @prim_and_proper = StreetCafe.create(post_code: 'LS88', chairs: 10)
-    @fountains_of_tea = StreetCafe.create(post_code: 'LS3', chairs: 30)
+    @pur_pour = StreetCafe.create(post_code: 'LS98', chairs: 9, category: 'ls1 small')
+    @tea_time = StreetCafe.create(post_code: 'LS99', chairs: 10, category: 'ls1 medium')
+    @york_tea = StreetCafe.create(post_code: 'LS13', chairs: 20, category: 'ls1 medium')
+    @york_and_humber = StreetCafe.create(post_code: 'LS2', chairs: 105, category: 'ls1 large')
+    @prim_and_proper = StreetCafe.create(post_code: 'LS88', chairs: 100, category: 'ls1 large')
+    @fountains_of_tea = StreetCafe.create(post_code: 'LS3', chairs: 30, category: 'ls1 medium')
   end
 
   describe 'validations' do
