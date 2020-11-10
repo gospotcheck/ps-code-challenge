@@ -6,7 +6,11 @@
 
 2) Download the data file from: https://github.com/gospotcheck/ps-code-challenge/blob/master/Street%20Cafes%202020-21.csv
 
+So I downloaded the file and created a rake task to seed my database. I was able to confirm that this was created using the Rails console, and by interpolating the count of all the street_cafe records in the put statement at the end of the rake task. This required creating a StreetCafe model with all of the columns included in the csv file. I also had to do some string manipulation of the headers in the task to make them conform to the columns the model was expecting.
+
 3) Add a varchar column to the table called `category`. 
+
+I added a this via a Rails migration.
 
 4) Create a view with the following columns[provide the view SQL]
     - post_code: The Post Code
