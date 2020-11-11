@@ -2,7 +2,7 @@ namespace :db do
   namespace :import do
     desc 'imports cafes to db from Street Cafes csv'
     task cafes: :environment do
-      system 'rails db:reset'
+      StreetCafe.destroy_all
 
       CSV.foreach(
         './lib/assets/Street Cafes 2020-21.csv', 

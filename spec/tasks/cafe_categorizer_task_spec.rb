@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CafeCategorizer do
+RSpec.describe 'db:categorize:cafes', type: :rake do
   before(:each) do
     @cafe1 = StreetCafe.create!(name: 'All Bar Most Chairs', street_address: 'Unit D Electric Press, 4 Millenium Square', post_code: 'LS1 5BN', number_of_chairs: 140)
     @cafe2 = StreetCafe.create!(name: 'Caffé Nero (Albion Place side)', street_address: '19 Albion Place', post_code: 'LS1 6JS', number_of_chairs: 16)
@@ -15,39 +15,16 @@ RSpec.describe CafeCategorizer do
     @cafe11 = StreetCafe.create!(name: 'The Adelphi', street_address: '3 - 5 Hunslet Road', post_code: 'LS10 1JQ', number_of_chairs: 35)
   end
 
-  it 'can categorize cafes with LS1 prefix in small category' do
-    CafeCategorizer.categorize(@cafe3)
-    cafe = StreetCafe.find_by(name: 'BHS')
-    expect(cafe.category).to eq('ls1 small')
-  end
-
-  it 'can categorize cafes with LS1 prefix in medium category' do
-    CafeCategorizer.categorize(@cafe4)
-    cafe = StreetCafe.find_by(name: 'Hotel Chocolat')
-    expect(cafe.category).to eq('ls1 medium')
-  end
-
-  it 'can categorize cafes with LS1 prefix in large category' do
-    CafeCategorizer.categorize(@cafe1)
-    cafe = StreetCafe.find_by(name: 'All Bar Most Chairs')
-    expect(cafe.category).to eq('ls1 large')
-  end
-
-  it 'can categorize cafes with LS2 prefix in small category' do
-    CafeCategorizer.categorize(@cafe7)
-    cafe = StreetCafe.find_by(name: 'Safran')
-    expect(cafe.category).to eq('ls2 small')
-  end
-  
-  it 'can categorize cafes with LS2 prefix in large category' do
-    CafeCategorizer.categorize(@cafe9)
-    cafe = StreetCafe.find_by(name: 'Tiger Tiger')
-    expect(cafe.category).to eq('ls2 large')
-  end
-
-  it 'can categorize cafes in the other category' do
-    CafeCategorizer.categorize(@cafe11)
-    cafe = StreetCafe.find_by(name: 'The Adelphi')
-    expect(cafe.category).to eq('other')
+  it 'categorizes all cafes based on chair size' do
+    expect(StreetCafe.cafes_by_category('%small')).to eq([])
+    expect(StreetCafe.cafes_by_category('%medium')).to eq([])
+    expect(StreetCafe.cafes_by_category('%large')).to eq([])
+    expect(StreetCafe.cafes_by_category('%other')).to eq([])
+    Rake::Task['db:categorize:cafes'].invoke
+    
+    expect(StreetCafe.cafes_by_category('%small').length).to eq(3)
+    expect(StreetCafe.cafes_by_category('%medium').length).to eq(2)
+    expect(StreetCafe.cafes_by_category('%large').length).to eq(5)
+    expect(StreetCafe.cafes_by_category('%other').length).to eq(1)
   end
 end

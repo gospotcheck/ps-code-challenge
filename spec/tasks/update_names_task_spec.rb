@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CafeCategorizer do
+RSpec.describe 'db:categorize:update_names', type: :rake do
   before(:each) do
     @cafe1 = StreetCafe.create!(name: 'All Bar Most Chairs', street_address: 'Unit D Electric Press, 4 Millenium Square', post_code: 'LS1 5BN', number_of_chairs: 140)
     @cafe2 = StreetCafe.create!(name: 'Caffé Nero (Albion Place side)', street_address: '19 Albion Place', post_code: 'LS1 6JS', number_of_chairs: 16)
@@ -13,41 +13,19 @@ RSpec.describe CafeCategorizer do
     @cafe9 = StreetCafe.create!(name: 'Tiger Tiger', street_address: '117 Albion St', post_code: 'LS2 8DY', number_of_chairs: 118)
     @cafe10 = StreetCafe.create!(name: 'The Wrens Hotel', street_address: '61A New Briggate', post_code: 'LS2 8DY', number_of_chairs: 20)
     @cafe11 = StreetCafe.create!(name: 'The Adelphi', street_address: '3 - 5 Hunslet Road', post_code: 'LS10 1JQ', number_of_chairs: 35)
+    cafes = StreetCafe.all
+
+    cafes.each do |cafe|
+      CafeCategorizer.categorize(cafe)
+    end
   end
 
-  it 'can categorize cafes with LS1 prefix in small category' do
-    CafeCategorizer.categorize(@cafe3)
-    cafe = StreetCafe.find_by(name: 'BHS')
-    expect(cafe.category).to eq('ls1 small')
-  end
+  it 'updates the names of cafes' do
+    Rake::Task['db:categorize:update_names'].invoke
+    updated_med_cafes = StreetCafe.where("category LIKE '%medium'")
+    expect(updated_med_cafes[0].name).to include('medium')
 
-  it 'can categorize cafes with LS1 prefix in medium category' do
-    CafeCategorizer.categorize(@cafe4)
-    cafe = StreetCafe.find_by(name: 'Hotel Chocolat')
-    expect(cafe.category).to eq('ls1 medium')
-  end
-
-  it 'can categorize cafes with LS1 prefix in large category' do
-    CafeCategorizer.categorize(@cafe1)
-    cafe = StreetCafe.find_by(name: 'All Bar Most Chairs')
-    expect(cafe.category).to eq('ls1 large')
-  end
-
-  it 'can categorize cafes with LS2 prefix in small category' do
-    CafeCategorizer.categorize(@cafe7)
-    cafe = StreetCafe.find_by(name: 'Safran')
-    expect(cafe.category).to eq('ls2 small')
-  end
-  
-  it 'can categorize cafes with LS2 prefix in large category' do
-    CafeCategorizer.categorize(@cafe9)
-    cafe = StreetCafe.find_by(name: 'Tiger Tiger')
-    expect(cafe.category).to eq('ls2 large')
-  end
-
-  it 'can categorize cafes in the other category' do
-    CafeCategorizer.categorize(@cafe11)
-    cafe = StreetCafe.find_by(name: 'The Adelphi')
-    expect(cafe.category).to eq('other')
+    update_large_cafes = StreetCafe.where("category LIKE '%large'")
+    expect(update_large_cafes[0].name).to include('large')
   end
 end
