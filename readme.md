@@ -20,7 +20,31 @@ I added a this via a Rails migration.
     - place_with_max_chairs: The name of the place with the most chairs in that Post Code
     -max_chairs: The number of chairs at the place_with_max_chairs
 	
-    *Please also include a brief description of how you verified #4*
+    So I started with a model class method for the StreetCafe model that used a raw SQL statement to aggregate all of the data. I was testing the SQL statement against a test for that model method and got that working. I then did some research on SQL views and refactored the model method into a SQL view that I migrated into the database. This was nice because then I was able to interact with that view like it was a model and was able to move all of the tests I wrote into a post code sql view spec that used the same tests I originally wrote for the model method.
+    
+    Here's the migration I used to create the SQL view:
+    ```ruby
+    	execute <<-SQL
+      CREATE VIEW post_code_data AS
+        SELECT post_code,
+        COUNT(name) as total_places,
+        SUM(number_of_chairs) as total_chairs,
+        ROUND(((SUM(number_of_chairs) * 100.0) / (SELECT SUM(number_of_chairs) FROM street_cafes)), 2) as chairs_pct,
+        (SELECT name 
+          FROM street_cafes sc_2 
+          WHERE sc_1.post_code = sc_2.post_code 
+          ORDER BY number_of_chairs 
+          DESC 
+          LIMIT 1) as place_with_max_chairs
+          FROM street_cafes sc_1
+          GROUP BY post_code
+          ORDER BY post_code;
+    SQL
+    ```
+    
+    And here is the output from Rails db:
+    
+    
 
 5) Write a Rails script to categorize the cafes and write the result to the category according to the rules:[provide the script]
     - If the Post Code is of the LS1 prefix type:
