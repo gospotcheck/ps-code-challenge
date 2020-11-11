@@ -26,12 +26,30 @@ RSpec.describe StreetCafe do
       expect(StreetCafe.get_ls2_chair_list).to eq(expected)
     end
 
-    it ".small_cafes" do
-      results = StreetCafe.small_cafes
-      expect(results.length).to eq(3)
-      expect(results).to include(@cafe3)
-      expect(results).to include(@cafe7)
-      expect(results).to include(@cafe8)
+    it ".cafes_by_category" do
+      # ONE SIZE SENT
+      small_results = StreetCafe.cafes_by_category('%small')
+      expect(small_results.length).to eq(3)
+      expect(small_results).to include(@cafe3)
+      expect(small_results).to include(@cafe7)
+      expect(small_results).to include(@cafe8)
+
+      medium_results = StreetCafe.cafes_by_category('%medium')
+      expect(medium_results.length).to eq(2)
+      expect(medium_results).to include(@cafe2)
+      expect(medium_results).to include(@cafe4)
+
+      large_results = StreetCafe.cafes_by_category('%large')
+      expect(large_results.length).to eq(5)
+      expect(large_results).to include(@cafe1)
+      expect(large_results).to include(@cafe5)
+      expect(large_results).to include(@cafe6)
+      expect(large_results).to include(@cafe9)
+      expect(large_results).to include(@cafe10)
+
+      # TWO SIZES SENT
+      med_large_results = StreetCafe.cafes_by_category('%medium', '%large')
+      expect(med_large_results.length).to eq(7)
     end
   end
 end
