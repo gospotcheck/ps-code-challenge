@@ -43,6 +43,7 @@ I added a this via a Rails migration.
     ```
     
     And here is the output from Rails db:
+    ![Alt text](db/post_code_view_sql.png?raw=true "post_code_data SQL view")
     
     
 
