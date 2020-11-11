@@ -52,6 +52,7 @@ CREATE VIEW public.post_code_data AS
     sum(sc_1.number_of_chairs) AS total_chairs,
     round((((sum(sc_1.number_of_chairs))::numeric * 100.0) / (( SELECT sum(street_cafes.number_of_chairs) AS sum
            FROM public.street_cafes))::numeric), 2) AS chairs_pct,
+    max(sc_1.number_of_chairs) AS max_chairs,
     ( SELECT sc_2.name
            FROM public.street_cafes sc_2
           WHERE ((sc_1.post_code)::text = (sc_2.post_code)::text)

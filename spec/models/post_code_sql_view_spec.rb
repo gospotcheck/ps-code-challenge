@@ -25,18 +25,21 @@ RSpec.describe PostCodeData do
     expect(aggregated_data.first.total_places).to eq(2)
     expect(aggregated_data.first.total_chairs).to eq(160)
     expect(aggregated_data.first.chairs_pct.to_f).to eq(ls15bn_percent)
+    expect(aggregated_data.first.max_chairs).to eq(140)
     expect(aggregated_data.first.place_with_max_chairs).to eq('All Bar Most Chairs')
 
     expect(aggregated_data[1].post_code).to eq('LS1 5EL')
     expect(aggregated_data[1].total_places).to eq(2)
     expect(aggregated_data[1].total_chairs).to eq(18)
     expect(aggregated_data[1].chairs_pct.to_f).to eq(ls15el_percent)
+    expect(aggregated_data[1].max_chairs).to eq(12)
     expect(aggregated_data[1].place_with_max_chairs).to eq('Hotel Chocolat')
 
     expect(aggregated_data.last.post_code).to eq('LS1 6JS')
     expect(aggregated_data.last.total_places).to eq(3)
     expect(aggregated_data.last.total_chairs).to eq(58)
     expect(aggregated_data.last.chairs_pct.to_f).to eq(ls16js_percent)
+    expect(aggregated_data.last.max_chairs).to eq(22)
     expect(aggregated_data.last.place_with_max_chairs).to eq('Caffé Nero (MOST CHAIRS)')
 
     result = aggregated_data.sum { |data| data.chairs_pct.to_f }.round(1)
