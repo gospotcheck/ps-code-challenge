@@ -6,6 +6,7 @@ namespace :db do
       cafes.each do |cafe|
         CafeCategorizer.categorize(cafe)
       end
+      puts "Categorized all cafes!"
     end
   end
 end
