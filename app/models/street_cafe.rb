@@ -1,3 +1,2 @@
 class StreetCafe < ApplicationRecord
-  
 end
