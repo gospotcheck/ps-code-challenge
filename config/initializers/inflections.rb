@@ -16,4 +16,5 @@
 # end
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural "cafe", "cafes"
+  inflect.plural "cafe_category_data", "cafe_category_data"
 end
