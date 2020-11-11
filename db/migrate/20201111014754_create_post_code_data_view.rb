@@ -13,15 +13,15 @@ class CreatePostCodeDataView < ActiveRecord::Migration[5.2]
           ORDER BY number_of_chairs 
           DESC 
           LIMIT 1) as place_with_max_chairs
-          FROM street_cafes sc_1
-          GROUP BY post_code
-          ORDER BY post_code;
+        FROM street_cafes sc_1
+        GROUP BY post_code
+        ORDER BY post_code;
     SQL
   end
 
   def down
     execute <<-SQL
-    DROP VIEW IF EXISTS post_code_data
+      DROP VIEW IF EXISTS post_code_data
     SQL
   end
 end
