@@ -6,6 +6,7 @@ class CreatePostCodeDataView < ActiveRecord::Migration[5.2]
         COUNT(name) as total_places,
         SUM(number_of_chairs) as total_chairs,
         ROUND(((SUM(number_of_chairs) * 100.0) / (SELECT SUM(number_of_chairs) FROM street_cafes)), 2) as chairs_pct,
+        MAX(number_of_chairs) as max_chairs,
         (SELECT name 
           FROM street_cafes sc_2 
           WHERE sc_1.post_code = sc_2.post_code 
