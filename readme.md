@@ -60,16 +60,58 @@ I added a this via a Rails migration.
 
     *Please share any tests you wrote for #5*
 
+    So I built a poro whose job was to check the parameters of the incoming cafes and see if they matched the rules above.
+    That poro is here: https://github.com/zachholcomb/ps-code-challenge/blob/master/app/poros/cafe_categorizer.rb 
+    I ended up going with class methods and memoizing the 50th_percentile variable to avoid having to initialize a new object for
+    each cafe record. It also allowed me to make the 50th percentile calulation only once for the 73 objects.
+
+    I then wrote a rake task that grabbed all of the records and called upon that poro to categorize each object.
+    This is the task: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/tasks/categorize_cafe.rake
+
+    I wrote specs for the poro and the tasks which you can find here:
+    CafeCategorizer spec: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_categorizer_spec.rb
+    CafeCategorizer task spec: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_categorizer_task_spec.rb
+
+
 6) Write a custom view to aggregate the categories [provide view SQL AND the results of this view]
     - category: The category column
     - total_places: The number of places in that category
     - total_chairs: The total chairs in that category
+
+    Here is the view SQL I wrote to get this data, again I used a migration to create the view:
+    ```Ruby
+        execute <<-SQL
+        CREATE VIEW cafe_category_data AS
+            SELECT category,
+            COUNT(name) as total_places,
+            SUM(number_of_chairs) as total_chairs
+            FROM street_cafes
+            GROUP BY category
+            ORDER BY category;
+        SQL
+    ```
+
+    And this is a screenshot of the results:
+    ![Alt text](db/cafe_category_data_sql_view.png?raw=true "category_data SQL view")
+
+    I was then able to write tests to check the data against a smaller sample size for accuracy which are here:
+    https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/models/cafe_category_data_sql_view_spec.rb
 
 7) Write a script in rails to:
     - For street_cafes categorized as small, write a script that exports their data to a csv and deletes the records
     - For street cafes categorized as medium or large, write a script that concatenates the category name to the beginning of the name and writes it back to the name column
 	
     *Please share any tests you wrote for #7*
+
+    For the first task I built a poro, CSVExporter which takes in a group of cafes and its output formats their attributes as CSV. The task 
+    then writes the csv to a file in the assets folder. What was nice about doing it this way was that I could test the output of CSVExporter before it was written to a file.
+    The tests for the exporter are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
+    And the output of the rake task is here: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/assets/Small%20Street%20Cafes%202020-11-11
+
+    For the second task, I used a model method I wrote on StreetCafe to get all of the medium and large cafes that I wrote tests for. And then used the builtin activerecord update_all function to batch update the cafes by adding their category to the front of their name.
+
+    Model Tests: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/models/street_cafe_spec.rb
+    Test for Name Task: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/update_names_task_spec.rb
 
 8) Show your work and check your email for submission instructions.
 
