@@ -5,7 +5,7 @@ namespace :db do
       system 'rails db:reset'
 
       CSV.foreach(
-        './lib/Street Cafes 2020-21.csv', 
+        './lib/assets/Street Cafes 2020-21.csv', 
         headers: true,
         encoding:'iso-8859-1',
         header_converters: lambda { |header| header.downcase.tr(' ', '_') }) do |row|
