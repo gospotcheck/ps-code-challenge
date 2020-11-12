@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CSVExporter do
+RSpec.describe CSVCafeExporter do
   before(:each) do
     cafe1 = StreetCafe.create!(name: 'All Bar Most Chairs', street_address: 'Unit D Electric Press, 4 Millenium Square', post_code: 'LS1 5BN', number_of_chairs: 140)
     cafe2 = StreetCafe.create!(name: 'Caffé Nero (Albion Place side)', street_address: '19 Albion Place', post_code: 'LS1 6JS', number_of_chairs: 16)
@@ -13,15 +13,17 @@ RSpec.describe CSVExporter do
     cafe9 = StreetCafe.create!(name: 'Tiger Tiger', street_address: '117 Albion St', post_code: 'LS2 8DY', number_of_chairs: 118)
     cafe10 = StreetCafe.create!(name: 'The Wrens Hotel', street_address: '61A New Briggate', post_code: 'LS2 8DY', number_of_chairs: 20)
     cafe11 = StreetCafe.create!(name: 'The Adelphi', street_address: '3 - 5 Hunslet Road', post_code: 'LS10 1JQ', number_of_chairs: 35)
-    cafes = StreetCafe.all
+    @cafes = StreetCafe.all
 
-    cafes.each do |cafe|
+    @cafes.each do |cafe|
       CafeCategorizer.categorize(cafe)
     end
   end
 
   it 'export returns the csv data to write' do
-    exporter = CSVExporter.new(StreetCafe.cafes_by_category('%small'))
+    cafes = StreetCafe.cafes_by_category('%small')
+    file = './spec/fixtures/small_cafes_test.csv'
+    exporter = CSVCafeExporter.new(cafes, file)
     csv_data = exporter.export_to_csv
 
     expected_headers = [
@@ -32,28 +34,32 @@ RSpec.describe CSVExporter do
       'Category',
       'Notes'
     ]
-    rows = csv_data.split("\n")
-    
-    rows.each_with_index do |row, index|
-      if index == 0
-        headers = row.split(',')
-        headers.each do |actual_header|
-          expect(expected_headers).to include(actual_header)
-        end
-      else
-        actual_row = rows[1].split(',')
-        cafe = StreetCafe.find_by(name: actual_row[0])
-        expected_data = [
-          cafe.name,
-          cafe.street_address,
-          cafe.post_code,
-          cafe.category,
-          cafe.number_of_chairs.to_s
-        ]
-        actual_row.each do |data|
-          expect(expected_data).to include(data)
-        end
+
+   CSV.foreach(file, headers: true) do |actual_row|
+      hashed_data = actual_row.to_h
+      cafe = @cafes.find { |cafe| cafe.name == hashed_data.values.first }
+      expected_data = [
+            cafe.name,
+            cafe.street_address,
+            cafe.post_code,
+            cafe.category,
+            cafe.number_of_chairs.to_s
+          ]
+      actual_row.to_h.values.each do |actual_data|
+        next if actual_data == nil
+        expect(expected_data).to include(actual_data)
       end
     end
+  end
+
+  it 'deletes all records of cafes when run' do
+    expect(StreetCafe.cafes_by_category('%small').length).to_not eq(0)
+    
+    cafes = StreetCafe.cafes_by_category('%small')
+    file = './spec/fixtures/small_cafes_test.csv'
+    exporter = CSVCafeExporter.new(cafes, file)
+    csv_data = exporter.export_to_csv
+
+    expect(StreetCafe.cafes_by_category('%small').length).to eq(0)
   end
 end
