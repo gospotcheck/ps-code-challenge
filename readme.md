@@ -16,6 +16,9 @@ Categorize cafes: `db:cafes:categorize_by_size`
 Update names: `db:cafes:update_med_lg_cafe_names`
 Export and Delete: `db:export_and_delete:small_cafes`
 
+I used a sql structure so to load the view sql run:
+`rake db:structure:load`
+
 
 ### Welcome to the take home portion of your interview! We're excited to jam through some technical stuff with you, but first it'll help to get a sense of how you work through data and coding problems. Work through what you can independently, but do feel free to reach out if you have blocking questions or problems.
 
