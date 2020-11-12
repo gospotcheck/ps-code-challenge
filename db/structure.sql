@@ -56,6 +56,40 @@ CREATE VIEW public.cafe_category_data AS
 
 
 --
+-- Name: cafe_data_by_category; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.cafe_data_by_category AS
+ SELECT street_cafes.category,
+    count(street_cafes.name) AS total_places,
+    sum(street_cafes.number_of_chairs) AS total_chairs
+   FROM public.street_cafes
+  GROUP BY street_cafes.category
+  ORDER BY street_cafes.category;
+
+
+--
+-- Name: cafe_data_by_post_code; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.cafe_data_by_post_code AS
+ SELECT sc_1.post_code,
+    count(sc_1.name) AS total_places,
+    sum(sc_1.number_of_chairs) AS total_chairs,
+    round((((sum(sc_1.number_of_chairs))::numeric * 100.0) / (( SELECT sum(street_cafes.number_of_chairs) AS sum
+           FROM public.street_cafes))::numeric), 2) AS chairs_pct,
+    max(sc_1.number_of_chairs) AS max_chairs,
+    ( SELECT sc_2.name
+           FROM public.street_cafes sc_2
+          WHERE ((sc_1.post_code)::text = (sc_2.post_code)::text)
+          ORDER BY sc_2.number_of_chairs DESC
+         LIMIT 1) AS place_with_max_chairs
+   FROM public.street_cafes sc_1
+  GROUP BY sc_1.post_code
+  ORDER BY sc_1.post_code;
+
+
+--
 -- Name: post_code_data; Type: VIEW; Schema: public; Owner: -
 --
 

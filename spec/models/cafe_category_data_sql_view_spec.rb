@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CafeCategoryData do
+RSpec.describe CafeDataByCategory do
   before(:each) do
     cafe1 = StreetCafe.create!(name: 'All Bar Most Chairs', street_address: 'Unit D Electric Press, 4 Millenium Square', post_code: 'LS1 5BN', number_of_chairs: 140)
     cafe2 = StreetCafe.create!(name: 'Caffé Nero (Albion Place side)', street_address: '19 Albion Place', post_code: 'LS1 6JS', number_of_chairs: 16)
@@ -21,14 +21,14 @@ RSpec.describe CafeCategoryData do
   end
 
   it 'can aggregate cafe category data' do
-    ls1_small_data = CafeCategoryData.find_by(category: 'ls1 small')
-    ls1_medium_data = CafeCategoryData.find_by(category: 'ls1 medium')
-    ls1_large_data = CafeCategoryData.find_by(category: 'ls1 large')
+    ls1_small_data = CafeDataByCategory.find_by(category: 'ls1 small')
+    ls1_medium_data = CafeDataByCategory.find_by(category: 'ls1 medium')
+    ls1_large_data = CafeDataByCategory.find_by(category: 'ls1 large')
 
-    ls2_small_data = CafeCategoryData.find_by(category: 'ls2 small')
-    ls2_large_data = CafeCategoryData.find_by(category: 'ls2 large')
+    ls2_small_data = CafeDataByCategory.find_by(category: 'ls2 small')
+    ls2_large_data = CafeDataByCategory.find_by(category: 'ls2 large')
 
-    other_data = CafeCategoryData.find_by(category: 'other')
+    other_data = CafeDataByCategory.find_by(category: 'other')
 
     expect(ls1_small_data.total_places).to eq(1)
     expect(ls1_small_data.total_chairs).to eq(6)

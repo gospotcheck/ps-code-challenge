@@ -1,7 +1,7 @@
 class CreatePostCodeDataView < ActiveRecord::Migration[5.2]
   def up
     execute <<-SQL
-      CREATE VIEW post_code_data AS
+      CREATE VIEW cafe_data_by_post_code AS
         SELECT post_code,
         COUNT(name) as total_places,
         SUM(number_of_chairs) as total_chairs,
@@ -21,7 +21,7 @@ class CreatePostCodeDataView < ActiveRecord::Migration[5.2]
 
   def down
     execute <<-SQL
-      DROP VIEW IF EXISTS post_code_data
+      DROP VIEW IF EXISTS cafe_data_by_post_code
     SQL
   end
 end

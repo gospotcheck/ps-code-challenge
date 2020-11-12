@@ -1,7 +1,7 @@
 class CreateCategoryDataView < ActiveRecord::Migration[5.2]
   def up
     execute <<-SQL
-      CREATE VIEW cafe_category_data AS
+      CREATE VIEW cafe_data_by_category AS
         SELECT category,
         COUNT(name) as total_places,
         SUM(number_of_chairs) as total_chairs
@@ -13,7 +13,7 @@ class CreateCategoryDataView < ActiveRecord::Migration[5.2]
 
   def down
     execute <<-SQL
-      DROP VIEW IF EXISTS cafe_category_data
+      DROP VIEW IF EXISTS cafe_data_by_category
     SQL
   end
 end

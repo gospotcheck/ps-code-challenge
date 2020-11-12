@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PostCodeData do 
+RSpec.describe CafeDataByPostCode do 
   before(:each) do
     @cafe1 = StreetCafe.create!(name: 'All Bar One', street_address: '27 East Parade', post_code: 'LS1 5BN', number_of_chairs: 20)
     @cafe2 = StreetCafe.create!(name: 'All Bar Most Chairs', street_address: 'Unit D Electric Press, 4 Millenium Square', post_code: 'LS1 5BN', number_of_chairs: 140)
@@ -18,7 +18,7 @@ RSpec.describe PostCodeData do
     ls16js_percent = (((post_code_chairs["LS1 6JS"].to_f) / total_chairs ) * 100).round(2)
     ls15el_percent = (((post_code_chairs["LS1 5EL"].to_f) / total_chairs ) * 100).round(2)
 
-    aggregated_data = PostCodeData.all
+    aggregated_data = CafeDataByPostCode.all
     expect(aggregated_data.length).to eq(3)
 
     expect(aggregated_data.first.post_code).to eq('LS1 5BN')

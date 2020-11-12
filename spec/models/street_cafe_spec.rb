@@ -23,7 +23,7 @@ RSpec.describe StreetCafe do
   describe "class methods" do
     it ".get_ls2_chair_list" do
       expected = [6, 18, 20, 20, 51, 118]
-      expect(StreetCafe.get_ls2_chair_list).to eq(expected)
+      expect(StreetCafe.get_ls2_cafes_chairs_list).to eq(expected)
     end
 
     it ".cafes_by_category" do
