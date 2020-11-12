@@ -29,7 +29,6 @@ So I downloaded the file and created a rake task to seed my database. I was able
 
 I then refactored that functionality to a poro called CSVCafeImporter which is here:
 https://github.com/zachholcomb/ps-code-challenge/blob/master/app/poros/csv_cafe_importer.rb
-This poro handles creating the records and will also run a check on the records, say if you imported the same csv and will remove duplicate records. This allows for multiple csvs to be imported but also keeps the database from importing identical records. 
 
 3) Add a varchar column to the table called `category`. 
 
