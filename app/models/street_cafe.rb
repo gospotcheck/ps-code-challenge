@@ -11,5 +11,9 @@ class StreetCafe < ApplicationRecord
         where("category LIKE ? OR category LIKE ?", args[0], args[1])  
       end
     end
+
+    def find_duplicate_records
+      select("MIN(id) as id").group(:name, :street_address).collect(&:id)
+    end
   end
 end
