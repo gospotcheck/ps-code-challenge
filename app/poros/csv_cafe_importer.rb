@@ -1,6 +1,7 @@
 class CSVCafeImporter
   class << self
     def import_file(file)
+      reset_models
       CSV.foreach(
         file, 
         headers: true,
@@ -11,22 +12,19 @@ class CSVCafeImporter
           data['notes'] = data.delete(data['nil'])
           StreetCafe.create(data)
       end
-      check_duplicates(file)
     end
 
     private
 
-    def check_duplicates(file)
-      if (CSV.read(file).length - 1) == StreetCafe.all.length
-        return
-      else
-        delete_duplicates
-      end
+    def reset_models
+      StreetCafe.destroy_all
+      reset_pk_sequence
     end
 
-    def delete_duplicates
-      ids = StreetCafe.find_duplicate_records
-      StreetCafe.delete(ids)
+    def reset_pk_sequence
+      ActiveRecord::Base.connection.tables.each do |t|
+        ActiveRecord::Base.connection.reset_pk_sequence!(t)
+      end
     end
   end
 end
