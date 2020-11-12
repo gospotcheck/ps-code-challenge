@@ -1,12 +1,35 @@
 ![](https://assets-global.website-files.com/5b69e8315733f2850ec22669/5b749a4663ff82be270ff1f5_GSC%20Lockup%20(Orange%20%3A%20Black).svg)
 
+**Application info:**
+
+`bundle install`
+
+I used figaro for env variables so run:
+`bundle exec figaro install`
+
+this installs application.yml
+`You'll need an env file with the variables IMPORT_PATH: "(path to the csv file)" and EXPORT_PATH: "(path where you want it to be written)"`
+
+All of my rake tasks are:
+Import cafes: `db:import:cafes`
+Categorize cafes: `db:cafes:categorize_by_size`
+Update names: `db:cafes:update_med_lg_cafe_names`
+Export and Delete: `db:export_and_delete:small_cafes`
+
+
 ### Welcome to the take home portion of your interview! We're excited to jam through some technical stuff with you, but first it'll help to get a sense of how you work through data and coding problems. Work through what you can independently, but do feel free to reach out if you have blocking questions or problems.
 
 1) This requires Postgres (9.4+) & Rails(4.2+), so if you don't already have both installed, please install them.
 
 2) Download the data file from: https://github.com/gospotcheck/ps-code-challenge/blob/master/Street%20Cafes%202020-21.csv
 
+For this challenge all ruby objects I used as helpers are stored in the poros folder, all sql views are stored in the models folder along with the street cafe model (the raw sql is inside of the migrations folder), all tasks are in the lib/tasks folder, and all csv files are in the lib/assets folder. You can find the screenshots of the sql views from my terminal are in the DB folder. 
+
 So I downloaded the file and created a rake task to seed my database. I was able to confirm that this was created using the Rails console, and by interpolating the count of all the street_cafe records in the put statement at the end of the rake task. This required creating a StreetCafe model with all of the columns included in the csv file. I also had to do some string manipulation of the headers in the task to make them conform to the columns the model was expecting.
+
+I then refactored that functionality to a poro called CSVCafeImporter which is here:
+https://github.com/zachholcomb/ps-code-challenge/blob/master/app/poros/csv_cafe_importer.rb
+This poro handles creating the records and will also run a check on the records, say if you imported the same csv and will remove duplicate records. This allows for multiple csvs to be imported but also keeps the database from importing identical records. 
 
 3) Add a varchar column to the table called `category`. 
 
@@ -45,6 +68,7 @@ I added a this via a Rails migration.
     And here is the output from Rails db:
     ![Alt text](db/post_code_view_sql.png?raw=true "post_code_data SQL view")
     
+    Spec for post code data: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/models/cafe_data_by_post_code_sql_view_spec.rb
     
 
 5) Write a Rails script to categorize the cafes and write the result to the category according to the rules:[provide the script]
@@ -67,7 +91,7 @@ I added a this via a Rails migration.
 
     I then wrote a rake task that grabbed all of the records and called upon that poro to categorize each object.
     
-    This is the task: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/tasks/categorize_cafe.rake
+    This is the task: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/tasks/categorize_cafes.rake
 
     I wrote specs for the poro and the tasks which you can find here:
     
@@ -110,9 +134,9 @@ I added a this via a Rails migration.
     For the first task I built a poro, CSVExporter which takes in a group of cafes and its output formats their attributes as CSV. The task 
     then writes the csv to a file in the assets folder. What was nice about doing it this way was that I could test the output of CSVExporter before it was written to a file. I also used Environmental variables with the exporter task so that allows the task to be flexible and could be written wherever the file path passed in is. One thing to note is that I gitignored those env variables which are `IMPORT_PATH` and `EXPORT_PATH`. In my env file they are defined as "./lib/assets/Street Cafes 2020-21.csv" and "./lib/assets/Small Street Cafes" respectively. The export path is then concatenated with the date and file extension.
     
-    The tests for the exporter are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
+    EXPORTER PORO TESTS: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
     
-    The tests for the export rake task are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_exporter_task_spec.rb
+    EXPORT RAKE TASK TESTS: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_exporter_task_spec.rb
     
     And the output of the rake task is here: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/assets/Small%20Street%20Cafes%202020-11-11
 
