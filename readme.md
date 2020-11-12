@@ -8,6 +8,9 @@
 
 So I downloaded the file and created a rake task to seed my database. I was able to confirm that this was created using the Rails console, and by interpolating the count of all the street_cafe records in the put statement at the end of the rake task. This required creating a StreetCafe model with all of the columns included in the csv file. I also had to do some string manipulation of the headers in the task to make them conform to the columns the model was expecting.
 
+I then refactored that functionality to a poro called CSVCafeImporter which is here:
+https://github.com/zachholcomb/ps-code-challenge/blob/master/app/poros/csv_cafe_importer.rb
+
 3) Add a varchar column to the table called `category`. 
 
 I added a this via a Rails migration.
@@ -67,7 +70,7 @@ I added a this via a Rails migration.
 
     I then wrote a rake task that grabbed all of the records and called upon that poro to categorize each object.
     
-    This is the task: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/tasks/categorize_cafe.rake
+    This is the task: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/tasks/categorize_cafes.rake
 
     I wrote specs for the poro and the tasks which you can find here:
     
@@ -110,9 +113,9 @@ I added a this via a Rails migration.
     For the first task I built a poro, CSVExporter which takes in a group of cafes and its output formats their attributes as CSV. The task 
     then writes the csv to a file in the assets folder. What was nice about doing it this way was that I could test the output of CSVExporter before it was written to a file. I also used Environmental variables with the exporter task so that allows the task to be flexible and could be written wherever the file path passed in is. One thing to note is that I gitignored those env variables which are `IMPORT_PATH` and `EXPORT_PATH`. In my env file they are defined as "./lib/assets/Street Cafes 2020-21.csv" and "./lib/assets/Small Street Cafes" respectively. The export path is then concatenated with the date and file extension.
     
-    The tests for the exporter are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
+    EXPORTER PORO TESTS: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
     
-    The tests for the export rake task are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_exporter_task_spec.rb
+    EXPORT RAKE TASK TESTS: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_exporter_task_spec.rb
     
     And the output of the rake task is here: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/assets/Small%20Street%20Cafes%202020-11-11
 
