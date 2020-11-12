@@ -11,8 +11,7 @@ namespace :db do
 
     desc 'Adds cafes categories to the beginning of Street Cafe names that are categorized as medium and large'
     task update_names: :environment do
-      cafes = StreetCafe.cafes_by_category('%medium', '%large') 
-      cafes.update_all("name = CONCAT(category, ' ', name)")
+      CafeNameUpdater.update_cafe_names_by_category
       puts 'All medium and large cafe names have been updated'
     end
   end

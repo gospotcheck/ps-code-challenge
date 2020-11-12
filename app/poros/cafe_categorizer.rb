@@ -32,16 +32,16 @@ class CafeCategorizer
       end
     end
 
-    def percentile_50
-      @@percentile_50 ||= set_50_percentile
-    end
-
     def over_50_percentile?(cafe)
       cafe.number_of_chairs >= percentile_50
     end
 
+    def percentile_50
+      @@percentile_50 ||= set_50_percentile
+    end
+
     def set_50_percentile
-      chair_numbers = StreetCafe.get_ls2_chair_list
+      chair_numbers = StreetCafe.get_ls2_cafes_chairs_list
       total_number_of_chairs = chair_numbers.length
       index = ((50.0 / 100) * (total_number_of_chairs + 1)) - 1
       if index % 1 == 0
