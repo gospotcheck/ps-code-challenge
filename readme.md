@@ -108,9 +108,11 @@ I added a this via a Rails migration.
     *Please share any tests you wrote for #7*
 
     For the first task I built a poro, CSVExporter which takes in a group of cafes and its output formats their attributes as CSV. The task 
-    then writes the csv to a file in the assets folder. What was nice about doing it this way was that I could test the output of CSVExporter before it was written to a file.
+    then writes the csv to a file in the assets folder. What was nice about doing it this way was that I could test the output of CSVExporter before it was written to a file. I also used Environmental variables with the exporter task so that allows the task to be flexible and could be written wherever the file path passed in is. One thing to note is that I gitignored those env variables which are `IMPORT_PATH` and `EXPORT_PATH`. In my env file they are defined as "./lib/assets/Street Cafes 2020-21.csv" and "./lib/assets/Small Street Cafes" respectively. The export path is then concatenated with the date and file extension.
     
     The tests for the exporter are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/poros/cafe_exporter_spec.rb
+    
+    The tests for the export rake task are here: https://github.com/zachholcomb/ps-code-challenge/blob/master/spec/tasks/cafe_exporter_task_spec.rb
     
     And the output of the rake task is here: https://github.com/zachholcomb/ps-code-challenge/blob/master/lib/assets/Small%20Street%20Cafes%202020-11-11
 
@@ -124,4 +126,5 @@ I added a this via a Rails migration.
 
 9) Celebrate, you did great! 
 
+Thanks really enjoyed this challenge!
 
