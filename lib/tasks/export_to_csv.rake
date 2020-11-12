@@ -7,7 +7,7 @@ namespace :db do
       puts 'Writing records to CSV'
       File.write("./lib/assets/Small Street Cafes #{Date.today}", csv_file)
       csv_exporter.remove_cafes_from_db
-      puts 'Small cafe records deleted from database'
+      puts 'Small cafe records were deleted from database'
     end
   end
 end
