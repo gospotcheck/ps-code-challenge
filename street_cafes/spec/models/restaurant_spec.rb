@@ -34,6 +34,8 @@ RSpec.describe Restaurant, type: :model do
 
     it '.categorize_restaurants' do
       Restaurant.categorize_restaurants
+
+      //tests that restaurants sum correctly by category
       expect(Restaurant.where("category = 'ls1 medium'")).to eq([@restaurant_1, @restaurant_4])
       expect(Restaurant.where("category = 'ls1 small'")).to eq([@restaurant_2])
       expect(Restaurant.where("category = 'ls1 large'")).to eq([@restaurant_3])
