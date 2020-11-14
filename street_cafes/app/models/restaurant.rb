@@ -16,7 +16,7 @@ class Restaurant < ApplicationRecord
       return 'ls2 small'
     else
       return 'ls2 large'
-    end 
+    end
   end
 
   def self.categorize_restaurants
@@ -31,5 +31,9 @@ class Restaurant < ApplicationRecord
       end
       restaurant.update(category: new_category)
     end
+  end
+
+  def self.find_small_restaurants
+    Restaurant.where(category: "ls1 small").or(Restaurant.where(category: "ls2 small"))
   end
 end

@@ -51,5 +51,17 @@ RSpec.describe Restaurant, type: :model do
       expect(Restaurant.where("category = 'ls2 large'").sum("number_of_chairs")).to eq(70)
       expect(Restaurant.where("category = 'other'").sum("number_of_chairs")).to eq(20)
     end
+
+    it '.find_small_restaurants' do
+      Restaurant.categorize_restaurants
+      expect(Restaurant.find_small_restaurants).to eq([@restaurant_2, @restaurant_5, @restaurant_7])
+    end
+
+    it 'manage_medium_large_restaurants' do
+      skip
+      Restaurant.manage_small_restaurants
+      expect(@restaurant_1.name).to eq('ls1 medium A Restaurant')
+      expect(@restaurant_6.name).to eq('ls2 large F Restaurant')
+    end
   end
 end
