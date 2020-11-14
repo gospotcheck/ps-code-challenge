@@ -1512,3 +1512,525 @@ Migrating to PostCodeSummariesView (20201113234327)
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mRestaurant Load (3.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:19:in `map'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (6.6ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:57.965640"], ["id", 74]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (1.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:57.977612"], ["id", 75]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:57.981769"], ["id", 76]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:57.984671"], ["id", 77]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:57.988014"], ["id", 78]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:57.990913"], ["id", 79]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:57.993566"], ["id", 80]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:57.995994"], ["id", 81]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:57.998237"], ["id", 82]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.000782"], ["id", 83]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.003686"], ["id", 84]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.006135"], ["id", 85]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.008431"], ["id", 86]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.010785"], ["id", 87]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.013348"], ["id", 88]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.015692"], ["id", 89]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.018239"], ["id", 90]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.020599"], ["id", 91]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.022908"], ["id", 92]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.025355"], ["id", 93]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.028051"], ["id", 94]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.030463"], ["id", 95]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.032761"], ["id", 96]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.035248"], ["id", 97]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.037593"], ["id", 98]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.039846"], ["id", 99]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.042172"], ["id", 100]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.044442"], ["id", 101]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.046635"], ["id", 102]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.048987"], ["id", 103]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.051304"], ["id", 104]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.053730"], ["id", 105]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.056062"], ["id", 106]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.058351"], ["id", 107]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.060751"], ["id", 108]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.063123"], ["id", 109]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.065486"], ["id", 110]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.067675"], ["id", 111]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.069968"], ["id", 112]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.072243"], ["id", 113]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.074387"], ["id", 114]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.076603"], ["id", 115]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.078852"], ["id", 116]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.080953"], ["id", 117]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.083100"], ["id", 118]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.085267"], ["id", 119]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.087471"], ["id", 120]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.089685"], ["id", 121]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-14 18:47:58.091944"], ["id", 122]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.094184"], ["id", 123]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.096353"], ["id", 124]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.098586"], ["id", 125]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-14 18:47:58.100825"], ["id", 126]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.103100"], ["id", 127]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.105352"], ["id", 128]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.107744"], ["id", 129]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.110005"], ["id", 130]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.112287"], ["id", 131]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.114626"], ["id", 132]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.116920"], ["id", 133]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.119316"], ["id", 134]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.121571"], ["id", 135]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.123753"], ["id", 136]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-14 18:47:58.125820"], ["id", 137]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.128006"], ["id", 138]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.130337"], ["id", 139]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.132491"], ["id", 140]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.134712"], ["id", 141]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.136862"], ["id", 142]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "who knows"], ["updated_at", "2020-11-14 18:47:58.138988"], ["id", 143]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.141125"], ["id", 144]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-14 18:47:58.143284"], ["id", 145]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-14 18:47:58.145578"], ["id", 146]]
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:27:in `block in categorize_restaurants'
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:24:in `map'
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.4ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-14 19:16:45.500051"], ["id", 75]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (1.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-14 19:16:45.513017"], ["id", 91]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-14 19:16:45.517938"], ["id", 92]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-14 19:16:45.525188"], ["id", 116]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-14 19:16:45.530027"], ["id", 127]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-14 19:16:45.532931"], ["id", 128]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-14 19:16:45.536585"], ["id", 130]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-14 19:16:45.541155"], ["id", 139]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-14 19:16:45.544713"], ["id", 142]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-14 19:16:45.547904"], ["id", 143]]
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:32:in `block in categorize_restaurants'
