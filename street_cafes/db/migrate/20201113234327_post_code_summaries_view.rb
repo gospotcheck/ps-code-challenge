@@ -7,7 +7,7 @@ class PostCodeSummariesView < ActiveRecord::Migration[6.0]
         (SELECT COUNT(name)) AS total_places,
         (SELECT SUM(number_of_chairs)) AS total_count,
         SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct,
-        (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+        (SELECT MAX(number_of_chairs)) AS max_chairs
       FROM restaurants
       GROUP BY post_code
     SQL
