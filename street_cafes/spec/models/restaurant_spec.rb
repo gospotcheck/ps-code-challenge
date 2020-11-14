@@ -35,13 +35,21 @@ RSpec.describe Restaurant, type: :model do
     it '.categorize_restaurants' do
       Restaurant.categorize_restaurants
 
-      //tests that restaurants sum correctly by category
+      #tests that restaurants sum correctly by category
       expect(Restaurant.where("category = 'ls1 medium'")).to eq([@restaurant_1, @restaurant_4])
       expect(Restaurant.where("category = 'ls1 small'")).to eq([@restaurant_2])
       expect(Restaurant.where("category = 'ls1 large'")).to eq([@restaurant_3])
       expect(Restaurant.where("category = 'ls2 small'")).to eq([@restaurant_5, @restaurant_7])
       expect(Restaurant.where("category = 'ls2 large'")).to eq([@restaurant_6, @restaurant_8])
       expect(Restaurant.where("category = 'other'")).to eq([@restaurant_9])
+
+      #tests that total chairs sum correctly by category
+      expect(Restaurant.where("category = 'ls1 medium'").sum("number_of_chairs")).to eq(87)
+      expect(Restaurant.where("category = 'ls1 small'").sum("number_of_chairs")).to eq(7)
+      expect(Restaurant.where("category = 'ls1 large'").sum("number_of_chairs")).to eq(115)
+      expect(Restaurant.where("category = 'ls2 small'").sum("number_of_chairs")).to eq(30)
+      expect(Restaurant.where("category = 'ls2 large'").sum("number_of_chairs")).to eq(70)
+      expect(Restaurant.where("category = 'other'").sum("number_of_chairs")).to eq(20)
     end
   end
 end
