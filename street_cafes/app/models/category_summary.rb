@@ -1,0 +1,4 @@
+class CategorySummary < ApplicationRecord
+
+
+end
