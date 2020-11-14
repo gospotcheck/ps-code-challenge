@@ -1,0 +1,43 @@
+require 'rails_helper'
+
+RSpec.describe Restaurant, type: :model do
+  describe "class methods" do
+    before(:each) do
+      @restaurant_1 = Restaurant.create(name: "A Restaurant",
+                                        post_code: "LS1 5BN",
+                                        number_of_chairs: 15)
+      @restaurant_2 = Restaurant.create(name: "B Restaurant",
+                                        post_code: "LS1 6RT",
+                                        number_of_chairs: 7)
+      @restaurant_3 = Restaurant.create(name: "C Restaurant",
+                                        post_code: "LS1 43P",
+                                        number_of_chairs: 115)
+      @restaurant_4 = Restaurant.create(name: "D Restaurant",
+                                        post_code: "LS1 LP9",
+                                        number_of_chairs: 72)
+      @restaurant_5 = Restaurant.create(name: "E Restaurant",
+                                        post_code: "LS2 7TR",
+                                        number_of_chairs: 20)
+      @restaurant_6 = Restaurant.create(name: "F Restaurant",
+                                        post_code: "LS2 R74",
+                                        number_of_chairs: 40)
+      @restaurant_7 = Restaurant.create(name: "G Restaurant",
+                                        post_code: "LS2 5BN",
+                                        number_of_chairs: 10)
+      @restaurant_8 = Restaurant.create(name: "H Restaurant",
+                                        post_code: "LS2 PSN",
+                                        number_of_chairs: 30)
+      @restaurant_9 = Restaurant.create(name: "I Restaurant",
+                                        post_code: "LS4 5BN",
+                                        number_of_chairs: 20)
+    end
+
+    it '.categorize_restaurants' do
+      Restaurant.categorize_restaurants
+      # expect(@restaurant_1.category).to eq("ls1 medium")
+      # expect(@restaurant_2.category).to eq("ls1 small")
+      # expect(@restaurant_3.category).to eq("ls1 large")
+      # expect(@restaurant_4.category).to eq("ls1 medium")
+    end
+  end
+end

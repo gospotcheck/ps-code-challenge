@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_median (0.2.5)
+      activesupport (>= 5)
     activejob (6.0.3.4)
       activesupport (= 6.0.3.4)
       globalid (>= 0.3.6)
@@ -215,6 +217,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median
   bootsnap (>= 1.4.2)
   byebug
   capybara
