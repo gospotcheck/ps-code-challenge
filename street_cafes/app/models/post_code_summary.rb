@@ -1,2 +1,0 @@
-class PostCodeSummary < ApplicationRecord
-end
