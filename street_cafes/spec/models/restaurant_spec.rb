@@ -34,10 +34,12 @@ RSpec.describe Restaurant, type: :model do
 
     it '.categorize_restaurants' do
       Restaurant.categorize_restaurants
-      # expect(@restaurant_1.category).to eq("ls1 medium")
-      # expect(@restaurant_2.category).to eq("ls1 small")
-      # expect(@restaurant_3.category).to eq("ls1 large")
-      # expect(@restaurant_4.category).to eq("ls1 medium")
+      expect(Restaurant.where("category = 'ls1 medium'")).to eq([@restaurant_1, @restaurant_4])
+      expect(Restaurant.where("category = 'ls1 small'")).to eq([@restaurant_2])
+      expect(Restaurant.where("category = 'ls1 large'")).to eq([@restaurant_3])
+      expect(Restaurant.where("category = 'ls2 small'")).to eq([@restaurant_5, @restaurant_7])
+      expect(Restaurant.where("category = 'ls2 large'")).to eq([@restaurant_6, @restaurant_8])
+      expect(Restaurant.where("category = 'other'")).to eq([@restaurant_9])
     end
   end
 end
