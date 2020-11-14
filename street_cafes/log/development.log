@@ -1340,3 +1340,175 @@ Migrating to CreateRestaurants (20201112041111)
   ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35m          CREATE OR REPLACE VIEW public.post_code_summaries AS
+          SELECT
+            post_code,
+            (SELECT COUNT(name)) AS total_places,
+            (SELECT SUM(number_of_chairs)) AS total_count,
+            SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct
+            (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+          FROM
+            restaurants
+          GROUP BY
+            post_code;
+[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35m          CREATE OR REPLACE VIEW public.post_code_summaries AS
+          SELECT
+            p.post_code,
+            (SELECT COUNT(p.name)) AS total_places,
+            (SELECT SUM(p.number_of_chairs)) AS total_count,
+            SUM(p.number_of_chairs) * 100.0 / SUM(SUM(p.number_of_chairs)) OVER () AS chairs_pct
+            (SELECT MAX(p.number_of_chairs)) AS place_with_max_chairs
+          FROM
+            restaurants p
+          GROUP BY
+            p.post_code;
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct
+        (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        SELECT COUNT(name) AS total_places,
+        SELECT SUM(number_of_chairs) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct
+        SELECT MAX(number_of_chairs) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        COUNT(name) AS total_places,
+        SUM(number_of_chairs) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct
+        MAX(number_of_chairs) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct
+        (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.1ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct,
+        (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.8ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct,
+        (SELECT MAX(number_of_chairs)) AS place_with_max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[36mprimary::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201113234327"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (13.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mPostCodeSummary Load (2.7ms)[0m  [1m[34mSELECT "post_code_summaries".* FROM "post_code_summaries" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35m      DROP VIEW IF EXISTS post_code_summaries
+[0m
+  [1m[36mprimary::SchemaMigration Destroy (4.9ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20201113234327"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct,
+        (SELECT MAX(number_of_chairs)) AS max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201113234327"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
