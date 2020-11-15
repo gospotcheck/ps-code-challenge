@@ -7365,3 +7365,5 @@ Migrating to CategorySummariesView (20201114195142)
   ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT * FROM category_summaries[0m
+  ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
