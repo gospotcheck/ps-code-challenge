@@ -54,4 +54,18 @@ class Restaurant < ApplicationRecord
   def self.csv_header_row
     %w(name, address, post_code, number_of_chairs, category, created_at, updated_at)
   end
+
+  def self.find_medium_large_restaurants
+    Restaurant.where(category: "ls1 medium").or(Restaurant.where(category: "ls1 large")).or(Restaurant.where(category: "ls2 large"))
+  end
+
+  def self.update_medium_large_restaurant_names
+    restaurants = Restaurant.find_medium_large_restaurants
+    restaurants.each do |restaurant|
+      cat_name = restaurant.category
+      original_name = restaurant.name
+      new_name = "#{cat_name} #{original_name}"
+      restaurant.update(name: new_name)
+    end
+  end
 end

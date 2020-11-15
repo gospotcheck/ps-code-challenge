@@ -57,11 +57,17 @@ RSpec.describe Restaurant, type: :model do
       expect(Restaurant.find_small_restaurants).to eq([@restaurant_2, @restaurant_5, @restaurant_7])
     end
 
-    it 'manage_medium_large_restaurants' do
-      skip
-      Restaurant.manage_small_restaurants
-      expect(@restaurant_1.name).to eq('ls1 medium A Restaurant')
-      expect(@restaurant_6.name).to eq('ls2 large F Restaurant')
+    it '.find_medium_large_restaurants' do
+      Restaurant.categorize_restaurants
+      expect(Restaurant.find_medium_large_restaurants).to eq([@restaurant_1, @restaurant_3, @restaurant_4, @restaurant_6, @restaurant_8])
+    end
+
+    it '.update_medium_large_restaurant_names' do
+      Restaurant.categorize_restaurants
+      Restaurant.update_medium_large_restaurant_names
+
+      expect(Restaurant.where("name = 'ls1 medium A Restaurant'")).to eq([@restaurant_1])
+      expect(Restaurant.where("name = 'ls2 large F Restaurant'")).to eq([@restaurant_6])
     end
   end
 end
