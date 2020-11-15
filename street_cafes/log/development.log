@@ -2185,3 +2185,1011 @@ Migrating to CategorySummariesView (20201114195142)
   ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Load (0.6ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:28:in `map'
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (3.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 02:58:51.182602"], ["id", 92]]
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.9ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 02:58:51.196606"], ["id", 127]]
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:36:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (("restaurants"."category" = $1 OR "restaurants"."category" = $2) OR "restaurants"."category" = $3)[0m  [["category", "ls1 medium"], ["category", "ls1 large"], ["category", "ls2 large"]]
+  ↳ app/models/restaurant.rb:64:in `update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium All Bar One"], ["updated_at", "2020-11-15 02:58:51.208002"], ["id", 74]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:58:51.210553"], ["id", 76]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:58:51.212895"], ["id", 77]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Bella Italia"], ["updated_at", "2020-11-15 02:58:51.215142"], ["id", 79]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Bean on the Run"], ["updated_at", "2020-11-15 02:58:51.217340"], ["id", 81]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large All Bar One"], ["updated_at", "2020-11-15 02:58:51.219643"], ["id", 75]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Black House Grill"], ["updated_at", "2020-11-15 02:58:51.221932"], ["id", 83]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Blayds Bar "], ["updated_at", "2020-11-15 02:58:51.224188"], ["id", 84]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Browns"], ["updated_at", "2020-11-15 02:58:51.226422"], ["id", 85]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Byron"], ["updated_at", "2020-11-15 02:58:51.228968"], ["id", 86]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Caffé Nero (Albion Place side)"], ["updated_at", "2020-11-15 02:58:51.231232"], ["id", 87]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Caffe Nero (Albion Street side)"], ["updated_at", "2020-11-15 02:58:51.233623"], ["id", 88]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Caffe Nero (Bond Street side)"], ["updated_at", "2020-11-15 02:58:51.236088"], ["id", 89]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Carluccios"], ["updated_at", "2020-11-15 02:58:51.238438"], ["id", 90]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large Peachy Keens"], ["updated_at", "2020-11-15 02:58:51.240616"], ["id", 116]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Costa Coffee Albion Place"], ["updated_at", "2020-11-15 02:58:51.242841"], ["id", 93]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Costa Coffee Bond Court"], ["updated_at", "2020-11-15 02:58:51.245051"], ["id", 94]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Costa Coffee Briggate"], ["updated_at", "2020-11-15 02:58:51.247338"], ["id", 95]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Cuthbert Brodrick (Wetherspoons)"], ["updated_at", "2020-11-15 02:58:51.249661"], ["id", 96]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Gourmet Burger Kitchen"], ["updated_at", "2020-11-15 02:58:51.251979"], ["id", 97]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Heaven"], ["updated_at", "2020-11-15 02:58:51.254326"], ["id", 99]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Hotel Chocolat"], ["updated_at", "2020-11-15 02:58:51.256742"], ["id", 100]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Hourglass"], ["updated_at", "2020-11-15 02:58:51.259045"], ["id", 101]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Jamie's Italian"], ["updated_at", "2020-11-15 02:58:51.261474"], ["id", 102]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium La Bottega Milanese (Bond Court)"], ["updated_at", "2020-11-15 02:58:51.263871"], ["id", 103]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium La Strega"], ["updated_at", "2020-11-15 02:58:51.266402"], ["id", 104]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Leeds Tapped"], ["updated_at", "2020-11-15 02:58:51.269004"], ["id", 106]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Little Tokyo"], ["updated_at", "2020-11-15 02:58:51.271313"], ["id", 107]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Loch Fyne Restaurant"], ["updated_at", "2020-11-15 02:58:51.273585"], ["id", 108]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Miller & Carter "], ["updated_at", "2020-11-15 02:58:51.275790"], ["id", 109]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Mojo"], ["updated_at", "2020-11-15 02:58:51.277955"], ["id", 110]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Mook"], ["updated_at", "2020-11-15 02:58:51.280231"], ["id", 111]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Mrs Atha's "], ["updated_at", "2020-11-15 02:58:51.282473"], ["id", 112]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Norman Bar"], ["updated_at", "2020-11-15 02:58:51.284805"], ["id", 113]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Pasta Romagna"], ["updated_at", "2020-11-15 02:58:51.289695"], ["id", 114]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Piccolino"], ["updated_at", "2020-11-15 02:58:51.291951"], ["id", 117]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Pizza Express"], ["updated_at", "2020-11-15 02:58:51.294179"], ["id", 118]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Pret a Manger, Bond St"], ["updated_at", "2020-11-15 02:58:51.296594"], ["id", 119]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Pret a Manger, Lands Lane"], ["updated_at", "2020-11-15 02:58:51.299024"], ["id", 120]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Primo's Gourmet Hot Dogs"], ["updated_at", "2020-11-15 02:58:51.301227"], ["id", 121]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Radisson Hotel"], ["updated_at", "2020-11-15 02:58:51.303537"], ["id", 123]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Reds Barbecue"], ["updated_at", "2020-11-15 02:58:51.305891"], ["id", 124]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Reform"], ["updated_at", "2020-11-15 02:58:51.308211"], ["id", 125]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 large Restaurant Bar and Grill"], ["updated_at", "2020-11-15 02:58:51.310474"], ["id", 126]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Scarbrough Hotel"], ["updated_at", "2020-11-15 02:58:51.312834"], ["id", 131]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Slug & Lettuce"], ["updated_at", "2020-11-15 02:58:51.315269"], ["id", 132]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Starbucks, Albion Street"], ["updated_at", "2020-11-15 02:58:51.317565"], ["id", 134]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium The New Conservatory"], ["updated_at", "2020-11-15 02:58:51.319837"], ["id", 138]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium The Pit"], ["updated_at", "2020-11-15 02:58:51.322196"], ["id", 140]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium The White Swan"], ["updated_at", "2020-11-15 02:58:51.324512"], ["id", 141]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large Tiger Tiger"], ["updated_at", "2020-11-15 02:58:51.326870"], ["id", 143]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Town Hall Tavern"], ["updated_at", "2020-11-15 02:58:51.330052"], ["id", 144]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium Verve"], ["updated_at", "2020-11-15 02:58:51.332971"], ["id", 145]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:28:in `map'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (("restaurants"."category" = $1 OR "restaurants"."category" = $2) OR "restaurants"."category" = $3)[0m  [["category", "ls1 medium"], ["category", "ls1 large"], ["category", "ls2 large"]]
+  ↳ app/models/restaurant.rb:64:in `update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium All Bar One"], ["updated_at", "2020-11-15 02:59:22.502244"], ["id", 74]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:59:22.505749"], ["id", 76]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:59:22.508464"], ["id", 77]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Bella Italia"], ["updated_at", "2020-11-15 02:59:22.510695"], ["id", 79]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Bean on the Run"], ["updated_at", "2020-11-15 02:59:22.513011"], ["id", 81]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large All Bar One"], ["updated_at", "2020-11-15 02:59:22.515330"], ["id", 75]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Costa Coffee Bond Court"], ["updated_at", "2020-11-15 02:59:22.517624"], ["id", 94]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Costa Coffee Briggate"], ["updated_at", "2020-11-15 02:59:22.519956"], ["id", 95]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Cuthbert Brodrick (Wetherspoons)"], ["updated_at", "2020-11-15 02:59:22.522248"], ["id", 96]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Gourmet Burger Kitchen"], ["updated_at", "2020-11-15 02:59:22.524514"], ["id", 97]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Heaven"], ["updated_at", "2020-11-15 02:59:22.526854"], ["id", 99]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Hotel Chocolat"], ["updated_at", "2020-11-15 02:59:22.529238"], ["id", 100]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Hourglass"], ["updated_at", "2020-11-15 02:59:22.531950"], ["id", 101]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Jamie's Italian"], ["updated_at", "2020-11-15 02:59:22.534285"], ["id", 102]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Black House Grill"], ["updated_at", "2020-11-15 02:59:22.536706"], ["id", 83]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium La Bottega Milanese (Bond Court)"], ["updated_at", "2020-11-15 02:59:22.539164"], ["id", 103]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium La Strega"], ["updated_at", "2020-11-15 02:59:22.541715"], ["id", 104]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Leeds Tapped"], ["updated_at", "2020-11-15 02:59:22.544093"], ["id", 106]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Little Tokyo"], ["updated_at", "2020-11-15 02:59:22.546436"], ["id", 107]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Loch Fyne Restaurant"], ["updated_at", "2020-11-15 02:59:22.548966"], ["id", 108]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Miller & Carter "], ["updated_at", "2020-11-15 02:59:22.551319"], ["id", 109]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Mojo"], ["updated_at", "2020-11-15 02:59:22.553821"], ["id", 110]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Mook"], ["updated_at", "2020-11-15 02:59:22.556167"], ["id", 111]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Mrs Atha's "], ["updated_at", "2020-11-15 02:59:22.558424"], ["id", 112]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Norman Bar"], ["updated_at", "2020-11-15 02:59:22.560868"], ["id", 113]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Pasta Romagna"], ["updated_at", "2020-11-15 02:59:22.563198"], ["id", 114]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Piccolino"], ["updated_at", "2020-11-15 02:59:22.565610"], ["id", 117]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Pizza Express"], ["updated_at", "2020-11-15 02:59:22.567901"], ["id", 118]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Pret a Manger, Bond St"], ["updated_at", "2020-11-15 02:59:22.570339"], ["id", 119]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Pret a Manger, Lands Lane"], ["updated_at", "2020-11-15 02:59:22.572768"], ["id", 120]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Primo's Gourmet Hot Dogs"], ["updated_at", "2020-11-15 02:59:22.575434"], ["id", 121]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Radisson Hotel"], ["updated_at", "2020-11-15 02:59:22.577769"], ["id", 123]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Reds Barbecue"], ["updated_at", "2020-11-15 02:59:22.579986"], ["id", 124]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Reform"], ["updated_at", "2020-11-15 02:59:22.582394"], ["id", 125]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 large ls1 large Restaurant Bar and Grill"], ["updated_at", "2020-11-15 02:59:22.584731"], ["id", 126]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Scarbrough Hotel"], ["updated_at", "2020-11-15 02:59:22.586975"], ["id", 131]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Blayds Bar "], ["updated_at", "2020-11-15 02:59:22.589286"], ["id", 84]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Browns"], ["updated_at", "2020-11-15 02:59:22.591591"], ["id", 85]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Slug & Lettuce"], ["updated_at", "2020-11-15 02:59:22.593843"], ["id", 132]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Starbucks, Albion Street"], ["updated_at", "2020-11-15 02:59:22.596204"], ["id", 134]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium The New Conservatory"], ["updated_at", "2020-11-15 02:59:22.598529"], ["id", 138]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium The Pit"], ["updated_at", "2020-11-15 02:59:22.600852"], ["id", 140]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium The White Swan"], ["updated_at", "2020-11-15 02:59:22.603180"], ["id", 141]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large Tiger Tiger"], ["updated_at", "2020-11-15 02:59:22.605624"], ["id", 143]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Town Hall Tavern"], ["updated_at", "2020-11-15 02:59:22.608111"], ["id", 144]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Verve"], ["updated_at", "2020-11-15 02:59:22.610375"], ["id", 145]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Byron"], ["updated_at", "2020-11-15 02:59:22.612666"], ["id", 86]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Caffé Nero (Albion Place side)"], ["updated_at", "2020-11-15 02:59:22.614905"], ["id", 87]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Caffe Nero (Albion Street side)"], ["updated_at", "2020-11-15 02:59:22.617142"], ["id", 88]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Caffe Nero (Bond Street side)"], ["updated_at", "2020-11-15 02:59:22.619401"], ["id", 89]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Carluccios"], ["updated_at", "2020-11-15 02:59:22.621706"], ["id", 90]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large Peachy Keens"], ["updated_at", "2020-11-15 02:59:22.623933"], ["id", 116]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium Costa Coffee Albion Place"], ["updated_at", "2020-11-15 02:59:22.626122"], ["id", 93]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Load (0.7ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:28:in `map'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (("restaurants"."category" = $1 OR "restaurants"."category" = $2) OR "restaurants"."category" = $3)[0m  [["category", "ls1 medium"], ["category", "ls1 large"], ["category", "ls2 large"]]
+  ↳ app/models/restaurant.rb:64:in `update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.6ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium All Bar One"], ["updated_at", "2020-11-15 02:59:32.290454"], ["id", 74]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:59:32.295023"], ["id", 76]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Bagel Nash"], ["updated_at", "2020-11-15 02:59:32.297431"], ["id", 77]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Bella Italia"], ["updated_at", "2020-11-15 02:59:32.299709"], ["id", 79]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Bean on the Run"], ["updated_at", "2020-11-15 02:59:32.302153"], ["id", 81]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large ls2 large All Bar One"], ["updated_at", "2020-11-15 02:59:32.304570"], ["id", 75]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Gourmet Burger Kitchen"], ["updated_at", "2020-11-15 02:59:32.306899"], ["id", 97]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Heaven"], ["updated_at", "2020-11-15 02:59:32.309258"], ["id", 99]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Hotel Chocolat"], ["updated_at", "2020-11-15 02:59:32.311612"], ["id", 100]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Black House Grill"], ["updated_at", "2020-11-15 02:59:32.313704"], ["id", 83]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium La Bottega Milanese (Bond Court)"], ["updated_at", "2020-11-15 02:59:32.315937"], ["id", 103]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium La Strega"], ["updated_at", "2020-11-15 02:59:32.318570"], ["id", 104]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Leeds Tapped"], ["updated_at", "2020-11-15 02:59:32.320923"], ["id", 106]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Little Tokyo"], ["updated_at", "2020-11-15 02:59:32.323217"], ["id", 107]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Loch Fyne Restaurant"], ["updated_at", "2020-11-15 02:59:32.325570"], ["id", 108]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Miller & Carter "], ["updated_at", "2020-11-15 02:59:32.327761"], ["id", 109]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Mojo"], ["updated_at", "2020-11-15 02:59:32.329965"], ["id", 110]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Mook"], ["updated_at", "2020-11-15 02:59:32.332174"], ["id", 111]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Mrs Atha's "], ["updated_at", "2020-11-15 02:59:32.334522"], ["id", 112]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Norman Bar"], ["updated_at", "2020-11-15 02:59:32.336929"], ["id", 113]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Pasta Romagna"], ["updated_at", "2020-11-15 02:59:32.339408"], ["id", 114]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Piccolino"], ["updated_at", "2020-11-15 02:59:32.341856"], ["id", 117]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Pizza Express"], ["updated_at", "2020-11-15 02:59:32.344038"], ["id", 118]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Pret a Manger, Bond St"], ["updated_at", "2020-11-15 02:59:32.346323"], ["id", 119]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Pret a Manger, Lands Lane"], ["updated_at", "2020-11-15 02:59:32.348605"], ["id", 120]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Primo's Gourmet Hot Dogs"], ["updated_at", "2020-11-15 02:59:32.351350"], ["id", 121]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Radisson Hotel"], ["updated_at", "2020-11-15 02:59:32.353765"], ["id", 123]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Reds Barbecue"], ["updated_at", "2020-11-15 02:59:32.355986"], ["id", 124]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Reform"], ["updated_at", "2020-11-15 02:59:32.358312"], ["id", 125]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 large ls1 large ls1 large Restaurant Bar and Grill"], ["updated_at", "2020-11-15 02:59:32.360777"], ["id", 126]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Scarbrough Hotel"], ["updated_at", "2020-11-15 02:59:32.363045"], ["id", 131]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Blayds Bar "], ["updated_at", "2020-11-15 02:59:32.365408"], ["id", 84]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Browns"], ["updated_at", "2020-11-15 02:59:32.367840"], ["id", 85]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Slug & Lettuce"], ["updated_at", "2020-11-15 02:59:32.370290"], ["id", 132]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Starbucks, Albion Street"], ["updated_at", "2020-11-15 02:59:32.372697"], ["id", 134]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium The New Conservatory"], ["updated_at", "2020-11-15 02:59:32.375157"], ["id", 138]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium The Pit"], ["updated_at", "2020-11-15 02:59:32.377442"], ["id", 140]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium The White Swan"], ["updated_at", "2020-11-15 02:59:32.379811"], ["id", 141]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large ls2 large Tiger Tiger"], ["updated_at", "2020-11-15 02:59:32.382126"], ["id", 143]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Town Hall Tavern"], ["updated_at", "2020-11-15 02:59:32.384693"], ["id", 144]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Verve"], ["updated_at", "2020-11-15 02:59:32.387153"], ["id", 145]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Byron"], ["updated_at", "2020-11-15 02:59:32.389542"], ["id", 86]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Caffé Nero (Albion Place side)"], ["updated_at", "2020-11-15 02:59:32.391757"], ["id", 87]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Caffe Nero (Albion Street side)"], ["updated_at", "2020-11-15 02:59:32.394098"], ["id", 88]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Caffe Nero (Bond Street side)"], ["updated_at", "2020-11-15 02:59:32.396368"], ["id", 89]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Carluccios"], ["updated_at", "2020-11-15 02:59:32.398712"], ["id", 90]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Costa Coffee Bond Court"], ["updated_at", "2020-11-15 02:59:32.400952"], ["id", 94]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large ls2 large ls2 large Peachy Keens"], ["updated_at", "2020-11-15 02:59:32.403319"], ["id", 116]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Costa Coffee Albion Place"], ["updated_at", "2020-11-15 02:59:32.405654"], ["id", 93]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Costa Coffee Briggate"], ["updated_at", "2020-11-15 02:59:32.408084"], ["id", 95]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Cuthbert Brodrick (Wetherspoons)"], ["updated_at", "2020-11-15 02:59:32.410443"], ["id", 96]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Hourglass"], ["updated_at", "2020-11-15 02:59:32.412824"], ["id", 101]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium ls1 medium ls1 medium Jamie's Italian"], ["updated_at", "2020-11-15 02:59:32.415146"], ["id", 102]]
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:68:in `block in update_medium_large_restaurant_names'
