@@ -38,7 +38,7 @@ class Restaurant < ApplicationRecord
   end
 
   def self.find_small_restaurants
-    Restaurant.where(category: "ls1 small").or(Restaurant.where(category: "ls2 small"))
+    Restaurant.where("category like ?", "%small%")
   end
 
   def self.to_csv(options = {})
@@ -56,7 +56,7 @@ class Restaurant < ApplicationRecord
   end
 
   def self.find_medium_large_restaurants
-    Restaurant.where(category: "ls1 medium").or(Restaurant.where(category: "ls1 large")).or(Restaurant.where(category: "ls2 large"))
+    Restaurant.where("category like ?", "%medium%").or(Restaurant.where("category like ?", "%large%"))
   end
 
   def self.update_medium_large_restaurant_names

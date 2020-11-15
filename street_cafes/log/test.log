@@ -6989,3 +6989,852 @@
   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls1 medium A Restaurant')[0m
   [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls2 large F Restaurant')[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (23.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "street_cafes_test"[0m
+  [1m[35m (130.8ms)[0m  [1m[35mCREATE DATABASE "street_cafes_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "restaurants" CASCADE[0m
+  [1m[35m (21.8ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "address" character varying, "post_code" character varying, "number_of_chairs" integer, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201114195142)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201112041111),
+(20201113234327);
+
+[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-11-15 22:52:54.249770"], ["updated_at", "2020-11-15 22:52:54.249770"]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "0dc5146aa86540ba44a05ba03e281165783690e9"], ["created_at", "2020-11-15 22:52:54.261909"], ["updated_at", "2020-11-15 22:52:54.261909"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (1.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:52:54.407929"], ["updated_at", "2020-11-15 22:52:54.407929"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:52:54.411755"], ["updated_at", "2020-11-15 22:52:54.411755"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:52:54.413873"], ["updated_at", "2020-11-15 22:52:54.413873"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:52:54.415266"], ["updated_at", "2020-11-15 22:52:54.415266"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.416521"], ["updated_at", "2020-11-15 22:52:54.416521"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:52:54.417759"], ["updated_at", "2020-11-15 22:52:54.417759"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:52:54.419041"], ["updated_at", "2020-11-15 22:52:54.419041"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:52:54.420521"], ["updated_at", "2020-11-15 22:52:54.420521"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.421695"], ["updated_at", "2020-11-15 22:52:54.421695"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.424211"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:52:54.427659"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:52:54.429078"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.430295"], ["id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.434957"], ["id", 5]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.437216"], ["id", 6]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.440484"], ["id", 7]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.442456"], ["id", 8]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:52:54.443897"], ["id", 9]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:52:54.480782"], ["updated_at", "2020-11-15 22:52:54.480782"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:52:54.482245"], ["updated_at", "2020-11-15 22:52:54.482245"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:52:54.483955"], ["updated_at", "2020-11-15 22:52:54.483955"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:52:54.485368"], ["updated_at", "2020-11-15 22:52:54.485368"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.486745"], ["updated_at", "2020-11-15 22:52:54.486745"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:52:54.488121"], ["updated_at", "2020-11-15 22:52:54.488121"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:52:54.489718"], ["updated_at", "2020-11-15 22:52:54.489718"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:52:54.490775"], ["updated_at", "2020-11-15 22:52:54.490775"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.492139"], ["updated_at", "2020-11-15 22:52:54.492139"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.494164"], ["id", 10]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:52:54.495965"], ["id", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:52:54.497658"], ["id", 12]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.498843"], ["id", 13]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.500751"], ["id", 14]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.503108"], ["id", 15]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.504446"], ["id", 16]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.506483"], ["id", 17]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:52:54.507400"], ["id", 18]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:52:54.510930"], ["updated_at", "2020-11-15 22:52:54.510930"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:52:54.512487"], ["updated_at", "2020-11-15 22:52:54.512487"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:52:54.514051"], ["updated_at", "2020-11-15 22:52:54.514051"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:52:54.515979"], ["updated_at", "2020-11-15 22:52:54.515979"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.517206"], ["updated_at", "2020-11-15 22:52:54.517206"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:52:54.518883"], ["updated_at", "2020-11-15 22:52:54.518883"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:52:54.520220"], ["updated_at", "2020-11-15 22:52:54.520220"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:52:54.521453"], ["updated_at", "2020-11-15 22:52:54.521453"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.522706"], ["updated_at", "2020-11-15 22:52:54.522706"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.525148"], ["id", 19]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:52:54.526295"], ["id", 20]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:52:54.527832"], ["id", 21]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.529370"], ["id", 22]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.531211"], ["id", 23]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.533101"], ["id", 24]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.535429"], ["id", 25]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.537248"], ["id", 26]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:52:54.538153"], ["id", 27]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category like '%small%')[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.9ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:52:54.565675"], ["updated_at", "2020-11-15 22:52:54.565675"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:52:54.567511"], ["updated_at", "2020-11-15 22:52:54.567511"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:52:54.568417"], ["updated_at", "2020-11-15 22:52:54.568417"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:52:54.569361"], ["updated_at", "2020-11-15 22:52:54.569361"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.570241"], ["updated_at", "2020-11-15 22:52:54.570241"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:52:54.571083"], ["updated_at", "2020-11-15 22:52:54.571083"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:52:54.571903"], ["updated_at", "2020-11-15 22:52:54.571903"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:52:54.572735"], ["updated_at", "2020-11-15 22:52:54.572735"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:52:54.573620"], ["updated_at", "2020-11-15 22:52:54.573620"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.575083"], ["id", 28]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:52:54.576005"], ["id", 29]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:52:54.576894"], ["id", 30]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:52:54.577746"], ["id", 31]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.579106"], ["id", 32]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.580432"], ["id", 33]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:52:54.581764"], ["id", 34]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:52:54.583072"], ["id", 35]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:52:54.583939"], ["id", 36]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category like '%small%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 small B Restaurant"], ["updated_at", "2020-11-15 22:52:54.585228"], ["id", 29]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 small E Restaurant"], ["updated_at", "2020-11-15 22:52:54.586124"], ["id", 32]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 small G Restaurant"], ["updated_at", "2020-11-15 22:52:54.586949"], ["id", 34]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls1 medium A Restaurant')[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:54:10.757743"], ["updated_at", "2020-11-15 22:54:10.757743"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:54:10.759831"], ["updated_at", "2020-11-15 22:54:10.759831"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:54:10.760920"], ["updated_at", "2020-11-15 22:54:10.760920"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:54:10.762118"], ["updated_at", "2020-11-15 22:54:10.762118"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.763194"], ["updated_at", "2020-11-15 22:54:10.763194"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:54:10.764206"], ["updated_at", "2020-11-15 22:54:10.764206"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:54:10.765432"], ["updated_at", "2020-11-15 22:54:10.765432"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:54:10.766558"], ["updated_at", "2020-11-15 22:54:10.766558"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.767590"], ["updated_at", "2020-11-15 22:54:10.767590"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.769438"], ["id", 37]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:54:10.770619"], ["id", 38]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:54:10.771582"], ["id", 39]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.772481"], ["id", 40]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.774520"], ["id", 41]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.776154"], ["id", 42]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.777654"], ["id", 43]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.778869"], ["id", 44]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:54:10.779693"], ["id", 45]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:54:10.800372"], ["updated_at", "2020-11-15 22:54:10.800372"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:54:10.801428"], ["updated_at", "2020-11-15 22:54:10.801428"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:54:10.802333"], ["updated_at", "2020-11-15 22:54:10.802333"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:54:10.803252"], ["updated_at", "2020-11-15 22:54:10.803252"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.804187"], ["updated_at", "2020-11-15 22:54:10.804187"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:54:10.805120"], ["updated_at", "2020-11-15 22:54:10.805120"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:54:10.806035"], ["updated_at", "2020-11-15 22:54:10.806035"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:54:10.806925"], ["updated_at", "2020-11-15 22:54:10.806925"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.8ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.808025"], ["updated_at", "2020-11-15 22:54:10.808025"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.810245"], ["id", 46]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:54:10.811317"], ["id", 47]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:54:10.812119"], ["id", 48]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.812981"], ["id", 49]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.814243"], ["id", 50]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.815450"], ["id", 51]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.816680"], ["id", 52]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.818086"], ["id", 53]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:54:10.818989"], ["id", 54]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:54:10.821295"], ["updated_at", "2020-11-15 22:54:10.821295"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:54:10.822311"], ["updated_at", "2020-11-15 22:54:10.822311"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:54:10.823330"], ["updated_at", "2020-11-15 22:54:10.823330"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:54:10.824151"], ["updated_at", "2020-11-15 22:54:10.824151"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.824933"], ["updated_at", "2020-11-15 22:54:10.824933"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:54:10.825694"], ["updated_at", "2020-11-15 22:54:10.825694"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:54:10.826449"], ["updated_at", "2020-11-15 22:54:10.826449"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:54:10.827191"], ["updated_at", "2020-11-15 22:54:10.827191"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.827993"], ["updated_at", "2020-11-15 22:54:10.827993"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.829395"], ["id", 55]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:54:10.830246"], ["id", 56]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:54:10.830996"], ["id", 57]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.831853"], ["id", 58]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.833102"], ["id", 59]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.834569"], ["id", 60]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.836219"], ["id", 61]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.837812"], ["id", 62]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:54:10.838587"], ["id", 63]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ((category like '%medium%') OR (category like '%large%'))[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:54:10.840965"], ["updated_at", "2020-11-15 22:54:10.840965"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:54:10.841955"], ["updated_at", "2020-11-15 22:54:10.841955"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:54:10.842863"], ["updated_at", "2020-11-15 22:54:10.842863"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:54:10.843626"], ["updated_at", "2020-11-15 22:54:10.843626"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.844372"], ["updated_at", "2020-11-15 22:54:10.844372"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:54:10.845224"], ["updated_at", "2020-11-15 22:54:10.845224"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:54:10.845997"], ["updated_at", "2020-11-15 22:54:10.845997"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:54:10.846755"], ["updated_at", "2020-11-15 22:54:10.846755"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:54:10.847512"], ["updated_at", "2020-11-15 22:54:10.847512"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.848764"], ["id", 64]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:54:10.849590"], ["id", 65]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:54:10.850372"], ["id", 66]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:54:10.851095"], ["id", 67]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.852302"], ["id", 68]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.853417"], ["id", 69]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:54:10.854723"], ["id", 70]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:54:10.855986"], ["id", 71]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:54:10.856885"], ["id", 72]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ((category like '%medium%') OR (category like '%large%'))[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium A Restaurant"], ["updated_at", "2020-11-15 22:54:10.858390"], ["id", 64]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 large C Restaurant"], ["updated_at", "2020-11-15 22:54:10.859185"], ["id", 66]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium D Restaurant"], ["updated_at", "2020-11-15 22:54:10.859985"], ["id", 67]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large F Restaurant"], ["updated_at", "2020-11-15 22:54:10.860795"], ["id", 69]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large H Restaurant"], ["updated_at", "2020-11-15 22:54:10.861543"], ["id", 71]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls1 medium A Restaurant')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls2 large F Restaurant')[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:55:04.461134"], ["updated_at", "2020-11-15 22:55:04.461134"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:55:04.463099"], ["updated_at", "2020-11-15 22:55:04.463099"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (1.0ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:55:04.464093"], ["updated_at", "2020-11-15 22:55:04.464093"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:55:04.466147"], ["updated_at", "2020-11-15 22:55:04.466147"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.467287"], ["updated_at", "2020-11-15 22:55:04.467287"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:55:04.468247"], ["updated_at", "2020-11-15 22:55:04.468247"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:55:04.469253"], ["updated_at", "2020-11-15 22:55:04.469253"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:55:04.470291"], ["updated_at", "2020-11-15 22:55:04.470291"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.471614"], ["updated_at", "2020-11-15 22:55:04.471614"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.473353"], ["id", 73]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:55:04.474439"], ["id", 74]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:55:04.475466"], ["id", 75]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.476382"], ["id", 76]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.478232"], ["id", 77]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.479653"], ["id", 78]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.481172"], ["id", 79]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.482546"], ["id", 80]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:55:04.483515"], ["id", 81]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 medium')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls1 large')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 small')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'ls2 large')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("restaurants"."number_of_chairs") FROM "restaurants" WHERE (category = 'other')[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.4ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:55:04.535601"], ["updated_at", "2020-11-15 22:55:04.535601"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:55:04.537614"], ["updated_at", "2020-11-15 22:55:04.537614"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:55:04.539317"], ["updated_at", "2020-11-15 22:55:04.539317"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:55:04.540980"], ["updated_at", "2020-11-15 22:55:04.540980"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.542550"], ["updated_at", "2020-11-15 22:55:04.542550"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:55:04.544103"], ["updated_at", "2020-11-15 22:55:04.544103"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:55:04.545791"], ["updated_at", "2020-11-15 22:55:04.545791"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:55:04.547128"], ["updated_at", "2020-11-15 22:55:04.547128"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.548083"], ["updated_at", "2020-11-15 22:55:04.548083"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.549588"], ["id", 82]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:55:04.550501"], ["id", 83]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:55:04.551389"], ["id", 84]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.552213"], ["id", 85]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.553619"], ["id", 86]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.555000"], ["id", 87]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.556301"], ["id", 88]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.557612"], ["id", 89]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:55:04.558522"], ["id", 90]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category like '%small%')[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:55:04.560686"], ["updated_at", "2020-11-15 22:55:04.560686"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:55:04.561846"], ["updated_at", "2020-11-15 22:55:04.561846"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:55:04.562967"], ["updated_at", "2020-11-15 22:55:04.562967"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:55:04.563898"], ["updated_at", "2020-11-15 22:55:04.563898"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.564755"], ["updated_at", "2020-11-15 22:55:04.564755"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:55:04.565681"], ["updated_at", "2020-11-15 22:55:04.565681"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:55:04.566729"], ["updated_at", "2020-11-15 22:55:04.566729"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:55:04.567538"], ["updated_at", "2020-11-15 22:55:04.567538"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.568324"], ["updated_at", "2020-11-15 22:55:04.568324"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.570056"], ["id", 91]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:55:04.571209"], ["id", 92]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:55:04.572443"], ["id", 93]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.573251"], ["id", 94]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.574505"], ["id", 95]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.575915"], ["id", 96]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.577115"], ["id", 97]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.578245"], ["id", 98]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:55:04.579040"], ["id", 99]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ((category like '%medium%') OR (category like '%large%'))[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "A Restaurant"], ["post_code", "LS1 5BN"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:55:04.581130"], ["updated_at", "2020-11-15 22:55:04.581130"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "B Restaurant"], ["post_code", "LS1 6RT"], ["number_of_chairs", 7], ["created_at", "2020-11-15 22:55:04.582056"], ["updated_at", "2020-11-15 22:55:04.582056"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "C Restaurant"], ["post_code", "LS1 43P"], ["number_of_chairs", 115], ["created_at", "2020-11-15 22:55:04.582779"], ["updated_at", "2020-11-15 22:55:04.582779"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "D Restaurant"], ["post_code", "LS1 LP9"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:55:04.583684"], ["updated_at", "2020-11-15 22:55:04.583684"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "E Restaurant"], ["post_code", "LS2 7TR"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.584430"], ["updated_at", "2020-11-15 22:55:04.584430"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "F Restaurant"], ["post_code", "LS2 R74"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:55:04.585266"], ["updated_at", "2020-11-15 22:55:04.585266"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "G Restaurant"], ["post_code", "LS2 5BN"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:55:04.586069"], ["updated_at", "2020-11-15 22:55:04.586069"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "H Restaurant"], ["post_code", "LS2 PSN"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:55:04.586861"], ["updated_at", "2020-11-15 22:55:04.586861"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "I Restaurant"], ["post_code", "LS4 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:55:04.587728"], ["updated_at", "2020-11-15 22:55:04.587728"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.589383"], ["id", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:55:04.590162"], ["id", 101]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:55:04.591002"], ["id", 102]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:55:04.591721"], ["id", 103]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.593034"], ["id", 104]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.594345"], ["id", 105]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:55:04.595494"], ["id", 106]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:55:04.596635"], ["id", 107]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:55:04.597375"], ["id", 108]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ((category like '%medium%') OR (category like '%large%'))[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium A Restaurant"], ["updated_at", "2020-11-15 22:55:04.598626"], ["id", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 large C Restaurant"], ["updated_at", "2020-11-15 22:55:04.599338"], ["id", 102]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls1 medium D Restaurant"], ["updated_at", "2020-11-15 22:55:04.600130"], ["id", 103]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large F Restaurant"], ["updated_at", "2020-11-15 22:55:04.600820"], ["id", 105]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Update (0.1ms)[0m  [1m[33mUPDATE "restaurants" SET "name" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["name", "ls2 large H Restaurant"], ["updated_at", "2020-11-15 22:55:04.601709"], ["id", 107]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls1 medium A Restaurant')[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (name = 'ls2 large F Restaurant')[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
