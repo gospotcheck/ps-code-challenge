@@ -22,5 +22,5 @@ This project is a backend Rails application that allows users to access informat
     - max_chairs: maximum number of chairs at a single cafe in the post code
   - Verification of data:
     - To verify accuracy of the view data, I spot checked the calculations by using SQL queries:
-      -First, I figured out total chairs among all cafes using the SQL query ```SELECT SUM(number_of_chairs) FROM restaurants;```
-      -Then, I looked at restaurant data for randomly selected post codes and made sure it matched the calculations in the post_code_summaries view. For example: ```SELECT * FROM restaurants WHERE restaurants.post_code ='LS1 8EQ';```
+      - First, I figured out total chairs among all cafes using the SQL query ```SELECT SUM(number_of_chairs) FROM restaurants;```
+      - Then, I looked at restaurant data for randomly selected post codes and made sure it matched the calculations in the post_code_summaries view. For example: ```SELECT * FROM restaurants WHERE restaurants.post_code ='LS1 8EQ';```
