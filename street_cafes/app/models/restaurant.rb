@@ -2,20 +2,20 @@ class Restaurant < ApplicationRecord
 
   def categorize_ls1
     if number_of_chairs < 10
-      return 'ls1 small'
+      self.update(category: 'ls1 small')
     elsif number_of_chairs >= 10 && number_of_chairs < 100
-      return 'ls1 medium'
+      self.update(category: 'ls1 medium')
     else
-      return 'ls1 large'
+      self.update(category: 'ls1 large')
     end
   end
 
   def categorize_ls2(prefix)
     fifty_percentile = Restaurant.where("post_code like ?", "%#{prefix}%").percentile(:number_of_chairs, 0.50)
     if number_of_chairs < fifty_percentile
-      return 'ls2 small'
+      self.update(category: 'ls2 small')
     else
-      return 'ls2 large'
+      self.update(category: 'ls2 large')
     end
   end
 
@@ -27,13 +27,13 @@ class Restaurant < ApplicationRecord
     restaurants = Restaurant.all
     restaurants.map do |restaurant|
       prefix = restaurant.post_code.split(" ")[0]
-      new_category = 'other'
       if prefix == "LS1"
-        new_category = restaurant.categorize_ls1
+        restaurant.categorize_ls1
       elsif prefix == "LS2"
-        new_category = restaurant.categorize_ls2(prefix)
+        restaurant.categorize_ls2(prefix)
+      else
+        restaurant.update(category: 'other')
       end
-      restaurant.update(category: new_category)
     end
   end
 
