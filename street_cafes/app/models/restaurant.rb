@@ -41,6 +41,20 @@ class Restaurant < ApplicationRecord
     Restaurant.where("category like ?", "%small%")
   end
 
+  def self.find_medium_large_restaurants
+    Restaurant.where("category like ?", "%medium%").or(Restaurant.where("category like ?", "%large%"))
+  end
+
+  def self.update_medium_large_restaurant_names
+    restaurants = Restaurant.find_medium_large_restaurants
+    restaurants.each do |restaurant|
+      cat_name = restaurant.category
+      original_name = restaurant.name
+      new_name = "#{cat_name} #{original_name}"
+      restaurant.update(name: new_name)
+    end
+  end
+  
   def self.to_csv(options = {})
     CSV.generate(options) do |csv_file|
       csv_file << csv_header_row
@@ -55,17 +69,4 @@ class Restaurant < ApplicationRecord
     %w(name, address, post_code, number_of_chairs, category, created_at, updated_at)
   end
 
-  def self.find_medium_large_restaurants
-    Restaurant.where("category like ?", "%medium%").or(Restaurant.where("category like ?", "%large%"))
-  end
-
-  def self.update_medium_large_restaurant_names
-    restaurants = Restaurant.find_medium_large_restaurants
-    restaurants.each do |restaurant|
-      cat_name = restaurant.category
-      original_name = restaurant.name
-      new_name = "#{cat_name} #{original_name}"
-      restaurant.update(name: new_name)
-    end
-  end
 end
