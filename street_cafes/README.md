@@ -6,7 +6,7 @@ This project is a backend Rails application that allows users to access informat
 
 ### Local Setup
 
-- Clone
+- ```clone```
 - ```bundle```
 - ```rails db:{create,migrate}```
 - ```rails db:seed:from_csv```
