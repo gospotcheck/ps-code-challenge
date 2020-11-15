@@ -48,11 +48,11 @@ This project is a backend Rails application that allows users to access informat
   - For all other Post Codes:
     - other
 
-- Export and delete records of small cafes:
+- Script to export and delete records of small cafes:
   - Run ```rake remove_small_restaurants```
   - Records of small cafes are exported to ```"./db/csv/exported_restaurants_#{time_stamp}.csv"```
 
-- Update names of medium and large cafes:
+- Script to update names of medium and large cafes:
   - Run ```rake update_restaurant_names```
   - Names of medium and large cafes are updated to match the following format: ```category_name cafe_name```
 
@@ -60,7 +60,7 @@ This project is a backend Rails application that allows users to access informat
   - Testing for all scripts can be found at ```"./spec/models/restaurant_spec.rb"```
 
 ### Next Steps
-  - I was unable to get the SQL query for creating the place_with_max_chairs column in my post_code_summaries view to work. This was where I got with my query, but I could not resolve the syntax errors:
+  - I was unable to get the SQL query for creating the ```place_with_max_chairs``` column in my ```post_code_summaries``` view to work. This was where I got with my query, but I could not resolve the syntax errors:
   ```SELECT post_code,
     name WHERE(number_of_chairs = (SELECT MAX(number_of_chairs)) from restaurants)
     FROM restaurants
