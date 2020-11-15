@@ -61,7 +61,8 @@ This project is a backend Rails application that allows users to access informat
 
 ### Next Steps
   - I was unable to get the SQL query for creating the ```place_with_max_chairs``` column in my ```post_code_summaries``` view to work. This was where I got with my query, but I could not resolve the syntax errors:
-  ````SELECT post_code,
+  ```
+    SELECT post_code,
     name WHERE(number_of_chairs = (SELECT MAX(number_of_chairs)) from restaurants)
     FROM restaurants
-    GROUP BY post_code;````
+    GROUP BY post_code;```
