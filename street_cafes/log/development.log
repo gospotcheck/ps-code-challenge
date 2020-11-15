@@ -8320,3 +8320,1058 @@ Migrating to CategorySummariesView (20201114195142)
   ↳ app/models/restaurant.rb:5:in `categorize_ls1'
   [1m[35mSQL (1.6ms)[0m  [1m[34mSELECT * FROM category_summaries[0m
   ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (37.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "street_cafes_development"[0m
+  [1m[35m (26.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "street_cafes_test"[0m
+  [1m[35m (113.2ms)[0m  [1m[35mCREATE DATABASE "street_cafes_development" ENCODING = 'unicode'[0m
+  [1m[35m (54.0ms)[0m  [1m[35mCREATE DATABASE "street_cafes_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6471321961055602770)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurants (20201112041111)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "address" character varying, "post_code" character varying, "number_of_chairs" integer, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201112041111"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to PostCodeSummariesView (20201113234327)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35m      CREATE VIEW post_code_summaries AS
+      SELECT
+        post_code,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_count,
+        SUM(number_of_chairs) * 100.0 / SUM(SUM(number_of_chairs)) OVER () AS chairs_pct,
+        (SELECT MAX(number_of_chairs)) AS max_chairs
+      FROM restaurants
+      GROUP BY post_code
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201113234327"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CategorySummariesView (20201114195142)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35m      CREATE VIEW category_summaries AS
+      SELECT
+        category,
+        (SELECT COUNT(name)) AS total_places,
+        (SELECT SUM(number_of_chairs)) AS total_chairs
+      FROM restaurants
+      GROUP BY category
+[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201114195142"]]
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-15 22:56:11.366068"], ["updated_at", "2020-11-15 22:56:11.366068"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6471321961055602770)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mRestaurant Load (1.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ lib/tasks/load_csv.rake:7:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.6ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "All Bar One"], ["address", "27 East Parade"], ["post_code", "LS1 5BN"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.718598"], ["updated_at", "2020-11-15 22:56:22.718598"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "All Bar One"], ["address", "Unit D Electric Press, 4 Millenium Square"], ["post_code", "LS2 3AD"], ["number_of_chairs", 140], ["created_at", "2020-11-15 22:56:22.723617"], ["updated_at", "2020-11-15 22:56:22.723617"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bagel Nash"], ["address", "34 St. Pauls Street"], ["post_code", "LS1 2AT"], ["number_of_chairs", 14], ["created_at", "2020-11-15 22:56:22.726074"], ["updated_at", "2020-11-15 22:56:22.726074"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bagel Nash"], ["address", "18 Swan Street"], ["post_code", "LS1 6AZ"], ["number_of_chairs", 18], ["created_at", "2020-11-15 22:56:22.728786"], ["updated_at", "2020-11-15 22:56:22.728786"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Barburrito"], ["address", "62 The Headrow"], ["post_code", "LS1 8EQ"], ["number_of_chairs", 8], ["created_at", "2020-11-15 22:56:22.731510"], ["updated_at", "2020-11-15 22:56:22.731510"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bella Italia"], ["address", "145 Briggate"], ["post_code", "LS1 6BR"], ["number_of_chairs", 32], ["created_at", "2020-11-15 22:56:22.733956"], ["updated_at", "2020-11-15 22:56:22.733956"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Becketts Bank (Wetherspoons)"], ["address", "28 - 30 Park Row"], ["post_code", "LS1 5HU"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.736366"], ["updated_at", "2020-11-15 22:56:22.736366"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Bean on the Run"], ["address", "Fish Street"], ["post_code", "LS1 6DB"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.738838"], ["updated_at", "2020-11-15 22:56:22.738838"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "BHS"], ["address", "49 Boar Lane"], ["post_code", "LS1 5EL"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.741552"], ["updated_at", "2020-11-15 22:56:22.741552"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Black House Grill"], ["address", "31 - 33 East Parade"], ["post_code", "LS1 5PS"], ["number_of_chairs", 60], ["created_at", "2020-11-15 22:56:22.744290"], ["updated_at", "2020-11-15 22:56:22.744290"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.7ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Blayds Bar "], ["address", "3-7 Blayds Yard"], ["post_code", "LS1 4AD"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.746913"], ["updated_at", "2020-11-15 22:56:22.746913"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Browns"], ["address", "70 - 72 The Headrow, The Light"], ["post_code", "LS1 8EQ"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.750192"], ["updated_at", "2020-11-15 22:56:22.750192"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Byron"], ["address", "9A Lands Lane"], ["post_code", "LS1 6AW"], ["number_of_chairs", 42], ["created_at", "2020-11-15 22:56:22.752767"], ["updated_at", "2020-11-15 22:56:22.752767"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Caffé Nero (Albion Place side)"], ["address", "19 Albion Place"], ["post_code", "LS1 6JS"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.755246"], ["updated_at", "2020-11-15 22:56:22.755246"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Caffe Nero (Albion Street side)"], ["address", "19 Albion Place"], ["post_code", "LS1 6JS"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.758084"], ["updated_at", "2020-11-15 22:56:22.758084"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Caffe Nero (Bond Street side)"], ["address", "19 Albion Place"], ["post_code", "LS1 6JS"], ["number_of_chairs", 22], ["created_at", "2020-11-15 22:56:22.761423"], ["updated_at", "2020-11-15 22:56:22.761423"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Carluccios"], ["address", "5 Greek Street"], ["post_code", "LS1 5SX"], ["number_of_chairs", 18], ["created_at", "2020-11-15 22:56:22.764541"], ["updated_at", "2020-11-15 22:56:22.764541"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Cattle Grid"], ["address", "Waterloo House, Assembly Street"], ["post_code", "LS2 7DB"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.767573"], ["updated_at", "2020-11-15 22:56:22.767573"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Chilli White"], ["address", "Assembly Street"], ["post_code", "LS2 7DA"], ["number_of_chairs", 51], ["created_at", "2020-11-15 22:56:22.770057"], ["updated_at", "2020-11-15 22:56:22.770057"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Costa Coffee Albion Place"], ["address", "12A Assembly Street"], ["post_code", "LS1 6JF"], ["number_of_chairs", 28], ["created_at", "2020-11-15 22:56:22.772389"], ["updated_at", "2020-11-15 22:56:22.772389"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Costa Coffee Bond Court"], ["address", "2 Bond Court"], ["post_code", "LS1 2JY"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:56:22.774740"], ["updated_at", "2020-11-15 22:56:22.774740"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Costa Coffee Briggate"], ["address", "133 Briggate"], ["post_code", "LS1 6BR"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.777157"], ["updated_at", "2020-11-15 22:56:22.777157"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Cuthbert Brodrick (Wetherspoons)"], ["address", "99 Portland Crescent"], ["post_code", "LS1 3HJ"], ["number_of_chairs", 66], ["created_at", "2020-11-15 22:56:22.779443"], ["updated_at", "2020-11-15 22:56:22.779443"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Gourmet Burger Kitchen"], ["address", "Minerva House, 29 East Parade"], ["post_code", "LS1 5PS"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.782002"], ["updated_at", "2020-11-15 22:56:22.782002"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Greggs, Briggate"], ["address", "Unit, 7 Central Arcade"], ["post_code", "LS1 6DX"], ["number_of_chairs", 4], ["created_at", "2020-11-15 22:56:22.784443"], ["updated_at", "2020-11-15 22:56:22.784443"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Heaven"], ["address", "Lands Lane"], ["post_code", "LS1 6LB"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.786893"], ["updated_at", "2020-11-15 22:56:22.786893"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Hotel Chocolat"], ["address", "55 Boar Lane"], ["post_code", "LS1 5EL"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.789354"], ["updated_at", "2020-11-15 22:56:22.789354"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Hourglass"], ["address", "157 - 158 Lower Briggate"], ["post_code", "LS1 6BG"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:56:22.791774"], ["updated_at", "2020-11-15 22:56:22.791774"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jamie's Italian"], ["address", "35 Park Row"], ["post_code", "LS1 5JL"], ["number_of_chairs", 32], ["created_at", "2020-11-15 22:56:22.794521"], ["updated_at", "2020-11-15 22:56:22.794521"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "La Bottega Milanese (Bond Court)"], ["address", "2 Bond Court"], ["post_code", "LS1 2JZ"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.797045"], ["updated_at", "2020-11-15 22:56:22.797045"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "La Strega"], ["address", "6 Fish Street"], ["post_code", "LS1 6DB"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.799538"], ["updated_at", "2020-11-15 22:56:22.799538"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Las Iguanas"], ["address", "3 Cloth Hall St"], ["post_code", "LS1 2HD"], ["number_of_chairs", 4], ["created_at", "2020-11-15 22:56:22.801967"], ["updated_at", "2020-11-15 22:56:22.801967"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Leeds Tapped"], ["address", "51 Boar Ln"], ["post_code", "LS1 5EL"], ["number_of_chairs", 10], ["created_at", "2020-11-15 22:56:22.805223"], ["updated_at", "2020-11-15 22:56:22.805223"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Little Tokyo"], ["address", "24 Central Rd"], ["post_code", "LS1 6DE"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.807941"], ["updated_at", "2020-11-15 22:56:22.807941"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Loch Fyne Restaurant"], ["address", "The Old Post Office, 2 City Square"], ["post_code", "LS1 2ES"], ["number_of_chairs", 72], ["created_at", "2020-11-15 22:56:22.810486"], ["updated_at", "2020-11-15 22:56:22.810486"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Miller & Carter "], ["address", "56 - 58 The Headrow"], ["post_code", "LS1 8TL"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.812911"], ["updated_at", "2020-11-15 22:56:22.812911"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mojo"], ["address", "18 Merrion Street"], ["post_code", "LS1 6PQ"], ["number_of_chairs", 21], ["created_at", "2020-11-15 22:56:22.815329"], ["updated_at", "2020-11-15 22:56:22.815329"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mook"], ["address", "3 - 5 Hirst's Yard"], ["post_code", "LS1 6NJ"], ["number_of_chairs", 15], ["created_at", "2020-11-15 22:56:22.817736"], ["updated_at", "2020-11-15 22:56:22.817736"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mrs Atha's "], ["address", "Central Road"], ["post_code", "LS1 6DE"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.820100"], ["updated_at", "2020-11-15 22:56:22.820100"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Norman Bar"], ["address", "36 Call Lane"], ["post_code", "LS1 6DT"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.822798"], ["updated_at", "2020-11-15 22:56:22.822798"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Pasta Romagna"], ["address", "26 Albion Place"], ["post_code", "LS1 6JS"], ["number_of_chairs", 48], ["created_at", "2020-11-15 22:56:22.825469"], ["updated_at", "2020-11-15 22:56:22.825469"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Patisserie Valerie"], ["address", "50A Albion Street"], ["post_code", "LS1 6AD"], ["number_of_chairs", 8], ["created_at", "2020-11-15 22:56:22.828202"], ["updated_at", "2020-11-15 22:56:22.828202"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Peachy Keens"], ["address", "Electric Press Building"], ["post_code", "LS2 3AD"], ["number_of_chairs", 96], ["created_at", "2020-11-15 22:56:22.830580"], ["updated_at", "2020-11-15 22:56:22.830580"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Piccolino"], ["address", "11 - 12 Park Row"], ["post_code", "LS1 5HD"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.832908"], ["updated_at", "2020-11-15 22:56:22.832908"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Pizza Express"], ["address", "4 Albion Place"], ["post_code", "LS1 6JL"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.835214"], ["updated_at", "2020-11-15 22:56:22.835214"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Pret a Manger, Bond St"], ["address", "32 Bond St"], ["post_code", "LS1 5BQ"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.837451"], ["updated_at", "2020-11-15 22:56:22.837451"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Pret a Manger, Lands Lane"], ["address", "6 Lands Lane"], ["post_code", "LS1 6AW"], ["number_of_chairs", 44], ["created_at", "2020-11-15 22:56:22.839824"], ["updated_at", "2020-11-15 22:56:22.839824"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Primo's Gourmet Hot Dogs"], ["address", "Unit 12 A/B, The Concourse Corn Exchange"], ["post_code", "LS1 7BR"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.842136"], ["updated_at", "2020-11-15 22:56:22.842136"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Prohibition"], ["address", "Regents Court, 39A Harrogate Road"], ["post_code", "LS7 3PD"], ["number_of_chairs", 32], ["created_at", "2020-11-15 22:56:22.844572"], ["updated_at", "2020-11-15 22:56:22.844572"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Radisson Hotel"], ["address", "1 The Light, The Headrow"], ["post_code", "LS1 8TL"], ["number_of_chairs", 30], ["created_at", "2020-11-15 22:56:22.846972"], ["updated_at", "2020-11-15 22:56:22.846972"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Reds Barbecue"], ["address", "1 Cloth Hall Street"], ["post_code", "LS1 2HD"], ["number_of_chairs", 40], ["created_at", "2020-11-15 22:56:22.849278"], ["updated_at", "2020-11-15 22:56:22.849278"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Reform"], ["address", "12 - 14 Merrion Street"], ["post_code", "LS1 6PQ"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.851586"], ["updated_at", "2020-11-15 22:56:22.851586"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Restaurant Bar and Grill"], ["address", "The Old Post Office, 3 City Square "], ["post_code", "LS1 2AN"], ["number_of_chairs", 152], ["created_at", "2020-11-15 22:56:22.853916"], ["updated_at", "2020-11-15 22:56:22.853916"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Revolution"], ["address", "41 Cookridge Street"], ["post_code", "LS2 3AW"], ["number_of_chairs", 84], ["created_at", "2020-11-15 22:56:22.856196"], ["updated_at", "2020-11-15 22:56:22.856196"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Safran"], ["address", "81 Kirkgate"], ["post_code", "LS2 7DJ"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.858501"], ["updated_at", "2020-11-15 22:56:22.858501"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "San Co Co"], ["address", "12 New Briggate"], ["post_code", "LS1 6NU"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.861357"], ["updated_at", "2020-11-15 22:56:22.861357"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sandinista"], ["address", "5 Cross Belgrave Street"], ["post_code", "LS2 8JP"], ["number_of_chairs", 18], ["created_at", "2020-11-15 22:56:22.863842"], ["updated_at", "2020-11-15 22:56:22.863842"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Scarbrough Hotel"], ["address", "Bishopgate Street"], ["post_code", "LS1 5DY"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.866255"], ["updated_at", "2020-11-15 22:56:22.866255"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Slug & Lettuce"], ["address", "14 Park Row"], ["post_code", "LS1 5HU"], ["number_of_chairs", 14], ["created_at", "2020-11-15 22:56:22.868576"], ["updated_at", "2020-11-15 22:56:22.868576"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Souvlaki restaurant and Bar"], ["address", "18 Great George Street"], ["post_code", "LS1 3DW"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.870889"], ["updated_at", "2020-11-15 22:56:22.870889"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Starbucks, Albion Street"], ["address", "48 Albion Street"], ["post_code", "LS1 6AA"], ["number_of_chairs", 21], ["created_at", "2020-11-15 22:56:22.873164"], ["updated_at", "2020-11-15 22:56:22.873164"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Starbucks, Briggate"], ["address", "80 Briggate"], ["post_code", "LS1 6LQ"], ["number_of_chairs", 2], ["created_at", "2020-11-15 22:56:22.875536"], ["updated_at", "2020-11-15 22:56:22.875536"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Starbucks, Headrow"], ["address", "13 The Headrow"], ["post_code", "LS1 8EQ"], ["number_of_chairs", 8], ["created_at", "2020-11-15 22:56:22.878036"], ["updated_at", "2020-11-15 22:56:22.878036"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Adelphi"], ["address", "3 - 5 Hunslet Road"], ["post_code", "LS10 1JQ"], ["number_of_chairs", 35], ["created_at", "2020-11-15 22:56:22.880361"], ["updated_at", "2020-11-15 22:56:22.880361"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The New Conservatory"], ["address", "Albion Place"], ["post_code", "LS1 6JL"], ["number_of_chairs", 12], ["created_at", "2020-11-15 22:56:22.882664"], ["updated_at", "2020-11-15 22:56:22.882664"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Picture House"], ["address", "82 - 90 Merrion Street"], ["post_code", "LS2 8LW"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.884957"], ["updated_at", "2020-11-15 22:56:22.884957"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Pit"], ["address", "9 Merrion Street"], ["post_code", "LS1 6PQ"], ["number_of_chairs", 64], ["created_at", "2020-11-15 22:56:22.887348"], ["updated_at", "2020-11-15 22:56:22.887348"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The White Swan"], ["address", "5 Swan Street"], ["post_code", "LS1 6LG"], ["number_of_chairs", 28], ["created_at", "2020-11-15 22:56:22.889712"], ["updated_at", "2020-11-15 22:56:22.889712"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Wrens Hotel"], ["address", "61A New Briggate"], ["post_code", "LS2 8JD"], ["number_of_chairs", 20], ["created_at", "2020-11-15 22:56:22.892013"], ["updated_at", "2020-11-15 22:56:22.892013"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Tiger Tiger"], ["address", "117 Albion St"], ["post_code", "LS2 8DY"], ["number_of_chairs", 118], ["created_at", "2020-11-15 22:56:22.894504"], ["updated_at", "2020-11-15 22:56:22.894504"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Town Hall Tavern"], ["address", "17 Westgate "], ["post_code", "LS1 2RA"], ["number_of_chairs", 16], ["created_at", "2020-11-15 22:56:22.896994"], ["updated_at", "2020-11-15 22:56:22.896994"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Verve"], ["address", "16 Merrion Street"], ["post_code", "LS1 6PQ"], ["number_of_chairs", 24], ["created_at", "2020-11-15 22:56:22.899362"], ["updated_at", "2020-11-15 22:56:22.899362"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "address", "post_code", "number_of_chairs", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Zizzi Restaurant"], ["address", "2 Cloth Hall Street"], ["post_code", "LS1 2HD"], ["number_of_chairs", 6], ["created_at", "2020-11-15 22:56:22.901692"], ["updated_at", "2020-11-15 22:56:22.901692"]]
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/load_csv.rake:10:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants"[0m
+  ↳ app/models/restaurant.rb:28:in `map'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.914396"], ["id", 1]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:56:22.923641"], ["id", 2]]
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.926118"], ["id", 3]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.928938"], ["id", 4]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:22.931392"], ["id", 5]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.933663"], ["id", 6]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:22.936059"], ["id", 7]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.940682"], ["id", 8]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:22.942960"], ["id", 9]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.945568"], ["id", 10]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.947911"], ["id", 11]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.950568"], ["id", 12]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.953083"], ["id", 13]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.955389"], ["id", 14]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.957833"], ["id", 15]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.960320"], ["id", 16]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.962659"], ["id", 17]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:56:22.966412"], ["id", 18]]
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:56:22.969515"], ["id", 19]]
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.971863"], ["id", 20]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.974187"], ["id", 21]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.976488"], ["id", 22]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.978799"], ["id", 23]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.981087"], ["id", 24]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:22.983349"], ["id", 25]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.985586"], ["id", 26]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.987732"], ["id", 27]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.989953"], ["id", 28]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.992160"], ["id", 29]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.994688"], ["id", 30]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:22.997096"], ["id", 31]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:22.999459"], ["id", 32]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.001747"], ["id", 33]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.004014"], ["id", 34]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.006196"], ["id", 35]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.008391"], ["id", 36]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.010668"], ["id", 37]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.012985"], ["id", 38]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.015296"], ["id", 39]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.017598"], ["id", 40]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.5ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.019821"], ["id", 41]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.022294"], ["id", 42]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:56:23.025212"], ["id", 43]]
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.027611"], ["id", 44]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.029876"], ["id", 45]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.9ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.032451"], ["id", 46]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.035509"], ["id", 47]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.037752"], ["id", 48]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:56:23.040021"], ["id", 49]]
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.042279"], ["id", 50]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.044619"], ["id", 51]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.3ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.047307"], ["id", 52]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:9:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 large"], ["updated_at", "2020-11-15 22:56:23.049744"], ["id", 53]]
+  ↳ app/models/restaurant.rb:9:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:9:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:56:23.052922"], ["id", 54]]
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:56:23.056226"], ["id", 55]]
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.058598"], ["id", 56]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:56:23.061890"], ["id", 57]]
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.064250"], ["id", 58]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.066597"], ["id", 59]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.068918"], ["id", 60]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.071184"], ["id", 61]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.073583"], ["id", 62]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.075897"], ["id", 63]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "other"], ["updated_at", "2020-11-15 22:56:23.078333"], ["id", 64]]
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:35:in `block in categorize_restaurants'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.080697"], ["id", 65]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:56:23.083700"], ["id", 66]]
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.086159"], ["id", 67]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.088568"], ["id", 68]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 small"], ["updated_at", "2020-11-15 22:56:23.091627"], ["id", 69]]
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:16:in `categorize_ls2'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY "restaurants"."number_of_chairs") FROM "restaurants" WHERE (post_code like '%LS2%')[0m
+  ↳ app/models/restaurant.rb:14:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls2 large"], ["updated_at", "2020-11-15 22:56:23.094806"], ["id", 70]]
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:18:in `categorize_ls2'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.097165"], ["id", 71]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 medium"], ["updated_at", "2020-11-15 22:56:23.099558"], ["id", 72]]
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:7:in `categorize_ls1'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[36mRestaurant Update (0.2ms)[0m  [1m[33mUPDATE "restaurants" SET "category" = $1, "updated_at" = $2 WHERE "restaurants"."id" = $3[0m  [["category", "ls1 small"], ["updated_at", "2020-11-15 22:56:23.101928"], ["id", 73]]
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/restaurant.rb:5:in `categorize_ls1'
+  [1m[35mSQL (1.6ms)[0m  [1m[34mSELECT * FROM category_summaries[0m
+  ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
+  [1m[36mRestaurant Load (1.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category like '%small%')[0m
+  ↳ app/models/restaurant.rb:48:in `block in to_csv'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE (category like '%small%')[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:10:in `block (2 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.3ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 5]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.3ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 7]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 9]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 18]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.3ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 25]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 32]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 42]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 55]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 56]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 57]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 60]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 62]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 63]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 66]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 69]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 73]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT * FROM category_summaries[0m
+  ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
