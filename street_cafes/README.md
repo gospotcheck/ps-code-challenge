@@ -65,4 +65,5 @@ This project is a backend Rails application that allows users to access informat
     SELECT post_code,
     name WHERE(number_of_chairs = (SELECT MAX(number_of_chairs)) from restaurants)
     FROM restaurants
-    GROUP BY post_code;```
+    GROUP BY post_code;
+  ```
