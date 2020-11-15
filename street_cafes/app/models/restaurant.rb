@@ -19,6 +19,10 @@ class Restaurant < ApplicationRecord
     end
   end
 
+  def to_csv
+    [name, address, post_code, number_of_chairs, category, created_at, updated_at]
+  end
+
   def self.categorize_restaurants
     restaurants = Restaurant.all
     restaurants.map do |restaurant|
@@ -35,5 +39,19 @@ class Restaurant < ApplicationRecord
 
   def self.find_small_restaurants
     Restaurant.where(category: "ls1 small").or(Restaurant.where(category: "ls2 small"))
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv_file|
+      csv_file << csv_header_row
+
+      all.each do |restaurant|
+        csv_file << restaurant.to_csv
+      end
+    end
+  end
+
+  def self.csv_header_row
+    %w(name, address, post_code, number_of_chairs, category, created_at, updated_at)
   end
 end

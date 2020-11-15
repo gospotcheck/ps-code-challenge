@@ -2076,3 +2076,112 @@ Migrating to CategorySummariesView (20201114195142)
   ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
   [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT * FROM category_summaries[0m
   ↳ lib/tasks/category_summary.rake:2:in `block in <top (required)>'
+  [1m[36mRestaurant Load (3.9ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2) LIMIT $3[0m  [["category", "ls1 small"], ["category", "ls2 small"], ["LIMIT", 11]]
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ app/models/restaurant.rb:44:in `block in to_csv'
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ app/models/restaurant.rb:48:in `block in to_csv'
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ app/models/restaurant.rb:48:in `block in to_csv'
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ app/models/restaurant.rb:48:in `block in to_csv'
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ app/models/restaurant.rb:48:in `block in to_csv'
+  [1m[36mRestaurant Load (0.3ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."category" = $1 OR "restaurants"."category" = $2)[0m  [["category", "ls1 small"], ["category", "ls2 small"]]
+  ↳ lib/tasks/remove_small_restaurants.rake:10:in `block (2 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.4ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 78]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 80]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 82]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.9ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 98]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 105]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 115]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 128]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 130]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.4ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 129]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 139]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 133]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 135]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 136]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 142]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 146]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[36mRestaurant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "restaurants" WHERE "restaurants"."id" = $1[0m  [["id", 91]]
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/remove_small_restaurants.rake:11:in `block (3 levels) in <top (required)>'
