@@ -16,6 +16,8 @@ namespace :db do
       puts 'Reset Primary Key Sequence'
       puts 'Database Seeded!'
 
+      Restaurant.categorize_restaurants
+      puts 'Restaurants categorized'
     end
   end
 end
